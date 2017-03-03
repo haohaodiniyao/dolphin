@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.dolphin.commons</groupId>
-  <artifactId>dolphin2</artifactId>
+  <artifactId>dolphin</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>dolphin2</name>
+  <name>dolphin</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,6 +15,13 @@
   </properties>
 
   <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.5</version>
+</dependency>
+  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
