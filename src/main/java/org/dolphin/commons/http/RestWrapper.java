@@ -85,7 +85,9 @@ public class RestWrapper {
 		}else{
 			resStr = JSON.toJSONString(obj);
 		}
-		this.res.setContentType("application/json;charset=utf-8");
+		this.res.setHeader("Access-Control-Allow-Origin", "*");
+		this.res.setHeader("Content-type", "application/json;charset=UTF-8");
+		this.res.setCharacterEncoding("UTF-8");
 		this.res.getWriter().write(resStr);
 	}
 	
