@@ -18,6 +18,10 @@ public class RestWrapper {
 	private boolean isBase64;
 	private String paramSource;
 	
+	public RestWrapper() {
+		super();
+	}
+
 	public RestWrapper(HttpServletRequest req, HttpServletResponse res) {
 		super();
 		this.req = req;
@@ -120,6 +124,12 @@ public class RestWrapper {
 	}
 	public void setParamSource(String paramSource) {
 		this.paramSource = paramSource;
+	}
+
+	@Override
+	public String toString() {
+		return "RestWrapper [req=" + req + ", res=" + res + ", method=" + method + ", isBase64=" + isBase64
+				+ ", paramSource=" + paramSource + "]";
 	}
 	
 }
