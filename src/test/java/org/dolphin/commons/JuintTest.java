@@ -10,10 +10,11 @@ public class JuintTest {
 
 	@Test
 	public void test() {
-		System.out.println(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm"));
-		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.format(new Date()));
-		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_TIME_FORMAT.format(new Date()));
-		System.out.println(DateFormatUtils.format(DateUtils.addYears(new Date(), -1), "yyyy-MM-dd HH:mm"));
+//		System.out.println(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm"));
+//		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.format(new Date()));
+//		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_TIME_FORMAT.format(new Date()));
+//		System.out.println(DateFormatUtils.format(DateUtils.addYears(new Date(), -1), "yyyy-MM-dd HH:mm"));
+		System.out.println(String.format("%1$s%%%2$s", "8888","9999"));
 	}
 
 }
