@@ -3,9 +3,10 @@ import com.lmax.disruptor.EventTranslatorOneArg;
 import com.lmax.disruptor.RingBuffer;
 
 import java.nio.ByteBuffer;
-
 /**
- * Created by licheng5 on 2016/5/24.
+ * 
+ * @author yaokai
+ *
  */
 public class LogEventProducerWithTranslator {
 

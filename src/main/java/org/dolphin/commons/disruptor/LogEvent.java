@@ -1,6 +1,8 @@
 package org.dolphin.commons.disruptor;
 /**
- * Created by licheng5 on 2016/5/24.
+ * 
+ * @author yaokai
+ *
  */
 public class LogEvent {
 
@@ -24,11 +26,9 @@ public class LogEvent {
         this.logData = logData;
     }
 
-    @Override
-    public String toString() {
-        return "LogEvent{" +
-                "value=" + value +
-                ", logData=" + logData +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "LogEvent [value=" + value + ", logData=" + logData + "]";
+	}
+
 }

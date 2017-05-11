@@ -5,9 +5,10 @@ import com.lmax.disruptor.dsl.Disruptor;
 import java.nio.ByteBuffer;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
 /**
- * Created by licheng5 on 2016/5/25.
+ * 
+ * @author yaokai
+ *
  */
 public class LogEventWithMethodRef {
     public static void handleEvent(LogEvent event, long sequenct, boolean endOfBatch) {

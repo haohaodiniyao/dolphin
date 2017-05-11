@@ -2,7 +2,9 @@ package org.dolphin.commons.disruptor;
 import java.util.Date;
 
 /**
- * Created by licheng5 on 2016/6/13.
+ * 
+ * @author yaokai
+ *
  */
 public class LogData {
     /**
@@ -214,25 +216,13 @@ public class LogData {
         this.remoteAddr = remoteAddr;
     }
 
-    @Override
-    public String toString() {
-        return "LogEvent{" +
-                ", interSerial='" + interSerial + '\'' +
-                ", invokeType=" + invokeType +
-                ", source='" + source + '\'' +
-                ", serviceName='" + serviceName + '\'' +
-                ", content='" + content + '\'' +
-                ", addUid=" + addUid +
-                ", addTime=" + addTime +
-                ", delFlag=" + delFlag +
-                ", orderId=" + orderId +
-                ", orderType=" + orderType +
-                ", type=" + type +
-                ", target='" + target + '\'' +
-                ", serverIp='" + serverIp + '\'' +
-                ", id=" + id +
-                ", timeCost=" + timeCost +
-                ", remoteAddr='" + remoteAddr + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "LogData [interSerial=" + interSerial + ", invokeType=" + invokeType + ", source=" + source
+				+ ", serviceName=" + serviceName + ", content=" + content + ", addUid=" + addUid + ", addTime="
+				+ addTime + ", delFlag=" + delFlag + ", orderId=" + orderId + ", orderType=" + orderType + ", type="
+				+ type + ", target=" + target + ", serverIp=" + serverIp + ", id=" + id + ", timeCost=" + timeCost
+				+ ", remoteAddr=" + remoteAddr + "]";
+	}
+
 }

@@ -1,8 +1,9 @@
 package org.dolphin.commons.disruptor;
 import com.lmax.disruptor.EventFactory;
-
 /**
- * Created by licheng5 on 2016/5/24.
+ * 
+ * @author yaokai
+ *
  */
 public class LogEventFactory implements EventFactory<LogEvent> {
     @Override

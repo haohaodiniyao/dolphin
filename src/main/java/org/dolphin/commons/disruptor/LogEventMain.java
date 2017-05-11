@@ -1,15 +1,15 @@
 package org.dolphin.commons.disruptor;
-import com.lmax.disruptor.EventHandler;
-import com.lmax.disruptor.RingBuffer;
-import com.lmax.disruptor.dsl.Disruptor;
-import com.lmax.disruptor.dsl.EventHandlerGroup;
-
 import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import com.lmax.disruptor.RingBuffer;
+import com.lmax.disruptor.dsl.Disruptor;
+import com.lmax.disruptor.dsl.EventHandlerGroup;
 /**
- * Created by licheng5 on 2016/5/24.
+ * 
+ * @author yaokai
+ *
  */
 public class LogEventMain {
     public static void main(String[] args) throws InterruptedException {
@@ -37,12 +37,12 @@ public class LogEventMain {
         LogEventProducer producer = new LogEventProducer(ringBuffer);
 
 //        ByteBuffer bb = ByteBuffer.allocate(16);
-        for (long l = 0; l < 200l; l++) {
+        for (long i = 0; i < 200l; i++) {
 //            bb.putLong(l);
             LogData logData = new LogData();
-            logData.setInterSerial(String.valueOf(l));
+            logData.setInterSerial(String.valueOf(i));
             logData.setAddTime(new Date());
-            producer.onData(l, logData); //produce log data
+            producer.onData(i, logData); //produce log data
 //            Thread.sleep(1000);
         }
         disruptor.shutdown();
