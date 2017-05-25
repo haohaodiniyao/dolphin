@@ -36,6 +36,9 @@ public class GuavaCache {
 		@Override
 		public Object load(String key) throws Exception {
 			System.out.println("key:"+key+",没有命中缓存...");
+			if("120".equals(key)){
+				return "";
+			}
 			return key;
 		}
 
@@ -53,7 +56,8 @@ public class GuavaCache {
 		
 	});
 	public static void main(String[] args) throws Exception {
-		cache.put("100", "100");
+		System.out.println("#"+cache.get("120"));
+		System.out.println("#"+cache.get("120"));
 		Thread.sleep(10*1000);
 	}
 

@@ -31,35 +31,38 @@ public class JuintTest {
 //			e.printStackTrace();
 //		}
 		
-		Observable<String> fs = new CommandHelloWorld("World").observe();
-		fs.subscribe(new Action1<String>(){
-
-			@Override
-			public void call(String result) {
-				System.out.println(result);
-			}
-			
-		});
-		fs.subscribe(new Observer<String>(){
-
-			@Override
-			public void onCompleted() {
-				System.out.println("execute onCompleted");
-			}
-
-			@Override
-			public void onError(Throwable e) {
-				System.out.println("on Error "+e.getMessage());
-				e.printStackTrace();
-			}
-
-			@Override
-			public void onNext(String v) {
-				System.out.println("onNext:"+v);
-			}
-			
-		});
-		System.in.read();
+//		Observable<String> fs = new CommandHelloWorld("World").observe();
+//		fs.subscribe(new Action1<String>(){
+//
+//			@Override
+//			public void call(String result) {
+//				System.out.println(result);
+//			}
+//			
+//		});
+//		fs.subscribe(new Observer<String>(){
+//
+//			@Override
+//			public void onCompleted() {
+//				System.out.println("execute onCompleted");
+//			}
+//
+//			@Override
+//			public void onError(Throwable e) {
+//				System.out.println("on Error "+e.getMessage());
+//				e.printStackTrace();
+//			}
+//
+//			@Override
+//			public void onNext(String v) {
+//				System.out.println("onNext:"+v);
+//			}
+//			
+//		});
+//		System.in.read();
+		Integer a = 100;
+		int b = 100;
+		System.out.println(a == b);
 	}
 
 }
