@@ -1,13 +1,17 @@
 package org.dolphin.commons.curator.discovery;
-import org.apache.curator.utils.CloseableUtils;
+import java.io.Closeable;
+import java.io.IOException;
+
 import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.state.ConnectionState;
+import org.apache.curator.utils.CloseableUtils;
+import org.apache.curator.x.discovery.ServiceCache;
 import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
-import java.io.Closeable;
-import java.io.IOException;
+import org.apache.curator.x.discovery.details.ServiceCacheListener;
 
 /**
  * This shows a very simplified method of registering an instance with the service discovery. Each individual
@@ -40,6 +44,20 @@ public class ExampleServer implements Closeable
             .serializer(serializer)
             .thisInstance(thisInstance)
             .build();
+        ServiceCache<InstanceDetails> serviceCache = serviceDiscovery.serviceCacheBuilder().name("tomcat").build();
+        serviceCache.addListener(new ServiceCacheListener(){
+
+			@Override
+			public void stateChanged(CuratorFramework paramCuratorFramework, ConnectionState paramConnectionState) {
+				System.out.println("...");
+			}
+
+			@Override
+			public void cacheChanged() {
+				System.out.println("...");
+			}
+        	
+        });
     }
 
     public ServiceInstance<InstanceDetails> getThisInstance()
