@@ -1,4 +1,4 @@
-package org.dolphin.commons.http;
+package org.dolphin.commons.httpclient;
 
 import java.io.IOException;
 
@@ -14,7 +14,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.dolphin.commons.util.Base64Utils;
-
+/**
+ * http://hc.apache.org/httpcomponents-client-4.5.x/examples.html
+ * @author yaokai
+ *
+ */
 public class HttpSender {
 	private CloseableHttpClient httpclient;
 	private String url;

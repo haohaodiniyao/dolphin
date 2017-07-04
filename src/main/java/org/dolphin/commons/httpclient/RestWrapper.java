@@ -1,4 +1,4 @@
-package org.dolphin.commons.http;
+package org.dolphin.commons.httpclient;
 
 import java.io.BufferedReader;
 import java.io.IOException;

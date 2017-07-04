@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
-import org.dolphin.commons.http.RestWrapper;
+import org.dolphin.commons.httpclient.RestWrapper;
 
 public class ReflectUtils {
 
