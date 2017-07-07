@@ -5,3 +5,13 @@
   --mysql 死锁问题
   http://hedengcheng.com/?p=985 阿里数据库牛人
   http://mysqllover.com/?p=431
+  http://blog.csdn.net/sadfishsc/article/details/17304703
+  http://www.cnblogs.com/xhan/p/3701459.html
+  https://www.percona.com/blog/2014/10/28/how-to-deal-with-mysql-deadlocks/
+  --使用cassandra存储上亿数据
+  http://f.dataguru.cn/article-11147-1.html
+  -- 开源日志系统
+  http://www.ttlsa.com/log-system/scribe-chukwa-kafka-flume-log-system-contrast/
+  -- 虾皮工作室
+  http://www.xiapistudio.com/taste-page#title-4
+  -- hadoop图形用户界面
