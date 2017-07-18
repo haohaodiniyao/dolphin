@@ -22,8 +22,8 @@ public class LogEventHandler2 implements EventHandler<LogEvent> {
 			@Override
 			public String call() throws Exception {
 				long begin = System.currentTimeMillis();
-				int random = new Random().nextInt(8);
-				Thread.sleep(random * 1000);
+//				int random = new Random().nextInt(8);
+//				Thread.sleep(random * 1000);
 				long end = System.currentTimeMillis();
 				System.out.println(Thread.currentThread()+",sequence:"+sequence+",endOfBatch:"+endOfBatch+",发送短信"+event.getValue()+",耗时"+(end-begin)/1000);
 				return "";

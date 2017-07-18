@@ -60,9 +60,15 @@ public class JuintTest {
 //			
 //		});
 //		System.in.read();
-		Integer a = 100;
-		int b = 100;
-		System.out.println(a == b);
+//		Integer a = 100;
+//		int b = 100;
+//		System.out.println(a == b);
+		String a = "";
+		if(a.length()>=5){
+			System.out.println(a.substring(0,5));	
+		}else{
+			System.out.println(a);
+		}
 	}
 
 }

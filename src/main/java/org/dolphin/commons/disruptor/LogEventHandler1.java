@@ -1,15 +1,7 @@
 package org.dolphin.commons.disruptor;
 
-import java.util.Date;
 import java.util.Random;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListeningExecutorService;
-import com.google.common.util.concurrent.MoreExecutors;
 import com.lmax.disruptor.EventHandler;
 
 /**
@@ -18,31 +10,21 @@ import com.lmax.disruptor.EventHandler;
  *
  */
 public class LogEventHandler1 implements EventHandler<LogEvent> {
-	ListeningExecutorService executorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-
 	@Override
 	public void onEvent(LogEvent event, long sequence, boolean endOfBatch) throws Exception {
-		final ListenableFuture<String> listenableFuture = executorService.submit(new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				long begin = System.currentTimeMillis();
-				int random = new Random().nextInt(10);
-				Thread.sleep(random * 1000);
-				long end = System.currentTimeMillis();
-				System.out.println(Thread.currentThread()+",sequence:"+sequence+",endOfBatch:"+endOfBatch+",发送短息"+event.getValue()+",耗时"+(end-begin)/1000);
-				return "";
-			}
-		});
-		Futures.addCallback(listenableFuture, new FutureCallback<String>() {
-			@Override
-			public void onSuccess(String result) {
-
-			}
-
-			@Override
-			public void onFailure(Throwable t) {
-
-			}
-		});
+		try{
+//			long begin = System.currentTimeMillis();
+//			int random = new Random().nextInt(10);
+//			if(random>5){
+//				Thread.sleep(100);
+//			}else{
+//				throw new Exception();
+//			}
+//			long end = System.currentTimeMillis();
+//			System.out.println(Thread.currentThread()+",sequence:"+sequence+",endOfBatch:"+endOfBatch+",发送短息"+event.getValue()+",耗时"+(end-begin)/1000);
+			System.out.println("处理...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

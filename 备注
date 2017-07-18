@@ -15,3 +15,4 @@
   -- 虾皮工作室
   http://www.xiapistudio.com/taste-page#title-4
   -- hadoop图形用户界面
+  -- mysql blob/text不允许有默认值 允许为null

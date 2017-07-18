@@ -1,0 +1,12 @@
+1- jsoup解析html
+2- mysql运维内参
+3- mysql主从http://blog.csdn.net/hguisu/article/details/7325124
+
+
+
+
+https://segmentfault.com/search?q=hadoop
+--阿里中间件团队博客
+http://jm.taobao.org/2016/08/04/heron-performance/?utm_source=tuicool&utm_medium=referral
+--博客虫
+http://www.blogchong.com/post/117.html

@@ -29,6 +29,8 @@ public class LogEventProducer {
             LogEvent logEvent = ringBuffer.get(sequence);
             logEvent.setValue(value);
             logEvent.setLogData(logData);
+        } catch(Exception e){
+        	e.printStackTrace();
         } finally {
             ringBuffer.publish(sequence);
         }

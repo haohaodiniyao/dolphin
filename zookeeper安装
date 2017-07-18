@@ -1,0 +1,38 @@
+#zookeeper安装
+##集群机器
+server1 192.168.157.128
+server2 192.168.157.129
+server3 192.168.157.130 
+
+###解压
+####tar -zxvf zookeeper-3.4.10.tar.gz
+
+###创建dataDir
+###mkdir zkDataDir
+###在zkDataDir中创建myid文件
+###创建并写入1
+echo "1" > myid
+
+###创建dataLogDir
+###mkdir zkDataLogDir
+
+###cd zookeeper-3.4.10
+###复制配置文件zoo_example.cfg
+###cp zoo_example.cfg zoo.cfg
+###编辑zoo.cfg
+dataDir=
+dataLogDir=
+server.1=192.168.157.128:2888:3888
+server.2=192.168.157.129:2888:3888
+server.3=192.168.157.130:2888:3888
+
+###同步到其它机器
+rsync -avzR /usr/local/src/XXXX 192.168.5.234:/
+###配置zk环境变量
+vi /etc/profile
+###启动zk
+zkServer.sh start
+zkServer.sh status
+zkServer.sh start-foreground 启动日志
+zkServer.sh print-cmd 配置
+zkCli.sh -timeout 5000 -server 192.168.157.128:2181
