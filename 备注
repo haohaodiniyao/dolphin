@@ -16,3 +16,7 @@
   http://www.xiapistudio.com/taste-page#title-4
   -- hadoop图形用户界面
   -- mysql blob/text不允许有默认值 允许为null
+#阿里内部面试题-幂等性控制
+http://www.roncoo.com/article/detail/124220 
+##服务的幂等性
+http://outofmemory.cn/wiki/service-idempotency

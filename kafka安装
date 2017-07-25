@@ -1,0 +1,26 @@
+#kafka_2.11-0.11.0.0安装
+###首先安装好zookeeper集群
+###tar -zxvf kafka_2.11-0.11.0.0.tgz
+###编辑server.properties
+broker.id=0
+listeners=PLAINTEXT://192.168.157.128:9092
+advertised.listeners=PLAINTEXT://192.168.157.128:9092
+zookeeper.connect=192.168.157.128:2181,192.168.157.129:2181,192.168.157.130:2181
+###同步kafka_2.11-0.11.0.0文件夹到其它机器
+##启动
+/usr/local/src/kafka_2.11-0.11.0.0/bin/kafka-server-start.sh -daemon /usr/local/src/kafka_2.11-0.11.0.0/config/server.properties
+##生产者
+/usr/local/src/kafka_2.11-0.11.0.0/bin/kafka-console-producer.sh --broker-list 192.168.157.128:9092,192.168.157.129:9092,192.168.157.130:9092 --topic test-topic
+##消费者
+/usr/local/src/kafka_2.11-0.11.0.0/bin/kafka-console-consumer.sh --bootstrap-server 192.168.157.128:9092,192.168.157.129:9092,192.168.157.130:9092 --topic test-topic --from-beginning
+##stop
+/usr/local/src/kafka_2.11-0.11.0.0/bin/kafka-server-stop.sh /usr/local/src/kafka_2.11-0.11.0.0/config/server.properties
+##删除topic
+[root@server1 bin]# sh kafka-topics.sh --zookeeper 192.168.157.128:2181,192.168.157.129:2181,192.168.157.130:2181 --delete --topic test-topic
+Topic test-topic is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+#注意设置delete.topic.enable=true
+
+
+016-Storm借助tick消息定时器统计统计周期性业务 
+http://blog.csdn.net/shenfuli/article/details/50719946

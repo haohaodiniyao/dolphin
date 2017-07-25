@@ -1,9 +1,11 @@
 #zookeeper安装
 ##集群机器
-server1 192.168.157.128
-server2 192.168.157.129
-server3 192.168.157.130 
-
+vi /etc/hosts
+192.168.157.128 server1
+192.168.157.129 server2
+192.168.157.130 server3
+修改主机名
+hostnamectl set-hostname server2
 ###解压
 ####tar -zxvf zookeeper-3.4.10.tar.gz
 
@@ -27,7 +29,7 @@ server.2=192.168.157.129:2888:3888
 server.3=192.168.157.130:2888:3888
 
 ###同步到其它机器
-rsync -avzR /usr/local/src/XXXX 192.168.5.234:/
+rsync -avzR /usr/local/src/XXXX 192.168.157.129:/
 ###配置zk环境变量
 vi /etc/profile
 ###启动zk
