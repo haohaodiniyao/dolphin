@@ -1,0 +1,6 @@
+1-显示查找文件匹配内容上下5行
+grep -C 5 'content' file
+grep -B 5 'content' file
+grep -A 5 'content' file
+2-查找指定路径下文件
+find /usr/local/src/ -name 'file*'
