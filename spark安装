@@ -1,0 +1,43 @@
+###spark安装
+####博客
+1-http://dblab.xmu.edu.cn/blog/spark-quick-start-guide/
+2-http://www.cnblogs.com/NextNight/p/6703362.html
+3-https://www.iteblog.com/archives/1295.html
+4-http://itindex.net/detail/50670-spark-spark-%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98
+5-管理job
+https://github.com/spark-jobserver/spark-jobserver/blob/master/doc/chinese/job-server.md
+####
+spark依赖java scala hadoop
+####
+安装配置
+scala-2.12.2.tgz
+
+export SCALA_HOME=/usr/local/src/scala-2.11.8
+export PATH=$PATH:$SCALA_HOME/bin
+
+scala
+####
+解压并配置
+spark-2.1.1-bin-without-hadoop
+export SPARK_HOME=/usr/local/src/spark-2.1.1-bin-without-hadoop
+export PATH=$PATH:$SPARK_HOME/bin
+####******
+编辑配置spark-env.sh
+
+export JAVA_HOME=export JAVA_HOME=/usr/local/src/jdk1.7.0_80
+export SPARK_DIST_CLASSPATH=$(/usr/local/src/hadoop-2.8.1/bin/hadoop classpath)
+SPARK_MASTER_IP=192.168.157.128
+SPARK_MASTER_WEBUI_PORT=8085
+
+####
+编辑配置slaves
+
+
+####
+运行
+sbin/start-all.sh
+####
+http://192.168.157.128:8085/
+####
+测试运行
+./bin/run-example SparkPi 2>&1 | grep "Pi is roughly"
