@@ -81,3 +81,12 @@ http://192.168.157.128:50070
 http://192.168.157.128:8088/cluster
 ###slave机器状态
 http://192.168.157.129:8042/node  
+
+
+
+
+####
+创建文件夹
+./hadoop fs -mkdir -p /usr/local/src/input
+上传文件
+./hadoop fs -put /usr/local/src/sparkWordCount /usr/local/src/input

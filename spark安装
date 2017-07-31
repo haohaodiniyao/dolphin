@@ -9,39 +9,49 @@ http://www.cnblogs.com/shishanyuan/p/4699644.html
 3-https://www.iteblog.com/archives/1295.html
 4-http://itindex.net/detail/50670-spark-spark-%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98
 5-管理job
-https://github.com/spark-jobserver/spark-jobserver/blob/master/doc/chinese/job-server.md
-####
-spark依赖java scala hadoop
-####
-安装配置
-scala-2.12.2.tgz
+  https://github.com/spark-jobserver/spark-jobserver/blob/master/doc/chinese/job-server.md
+6-配置文件详解
+  https://yq.aliyun.com/articles/15277
 
-export SCALA_HOME=/usr/local/src/scala-2.11.8
-export PATH=$PATH:$SCALA_HOME/bin
 
-scala
+
 ####
-解压并配置
-spark-2.1.1-bin-without-hadoop
-export SPARK_HOME=/usr/local/src/spark-2.1.1-bin-without-hadoop
+下载
+spark-2.0.0-bin-hadoop2.6.tgz
+####
+解压并配置  vi /etc/profile
+export SPARK_HOME=/usr/local/src/spark-2.0.0-bin-hadoop2.6
 export PATH=$PATH:$SPARK_HOME/bin
 ####******
 编辑配置spark-env.sh
-
-export JAVA_HOME=export JAVA_HOME=/usr/local/src/jdk1.7.0_80
-export SPARK_DIST_CLASSPATH=$(/usr/local/src/hadoop-2.8.1/bin/hadoop classpath)
+JAVA_HOME=export JAVA_HOME=/usr/local/src/jdk1.7.0_80
 SPARK_MASTER_IP=192.168.157.128
-SPARK_MASTER_WEBUI_PORT=8085
-
+SPARK_MASTER_WEBUI_PORT=8080          //默认是8080
 ####
 编辑配置slaves
-
-
+192.168.157.129
+192.168.157.130
 ####
 运行
 sbin/start-all.sh
 ####
-http://192.168.157.128:8085/
+http://192.168.157.128:8080/
 ####
 测试运行
 ./bin/run-example SparkPi 2>&1 | grep "Pi is roughly"
+
+
+
+
+
+#########运行scala shell
+./bin/spark-shell
+val lines = sc.textFile("../../textFile");
+lines.count();
+http://192.168.157.128:4040
+
+
+
+
+####   javaWordCount  提交spark计算   ####
+spark-submit --master spark://192.168.157.128:7077 --name JavaWordCount --class com.example.spark_example.spark_example.JavaWordCount --executor-memory 1G --total-executor-cores 2 /usr/local/src/spark_example-0.0.1-SNAPSHOT.jar
