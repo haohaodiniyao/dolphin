@@ -1,6 +1,10 @@
 ###spark安装
 ####博客
-
+spark streaming demo
+http://blog.csdn.net/jianghuxiaojin/article/details/51452593
+spark api 详解
+http://www.cnblogs.com/shishanyuan/p/4721102.html
+http://www.cnblogs.com/shishanyuan/p/4721102.html
 
 http://www.cnblogs.com/shishanyuan/p/4699644.html
 
@@ -35,7 +39,9 @@ SPARK_MASTER_WEBUI_PORT=8080          //默认是8080
 运行
 sbin/start-all.sh
 ####
+web页面
 http://192.168.157.128:8080/
+http://192.168.157.128:4040/jobs/
 ####
 测试运行
 ./bin/run-example SparkPi 2>&1 | grep "Pi is roughly"

@@ -90,3 +90,6 @@ http://192.168.157.129:8042/node
 ./hadoop fs -mkdir -p /usr/local/src/input
 上传文件
 ./hadoop fs -put /usr/local/src/sparkWordCount /usr/local/src/input
+
+####多文件结果合并
+./hdfs dfs -getmerge hdfs://192.168.157.128:9000/sogou/output1 /usr/local/src/result1
