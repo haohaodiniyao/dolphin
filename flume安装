@@ -1,0 +1,69 @@
+###apache-flume-1.7.0-bin.tar.gz安装###
+#####blog
+###常见日志收集场景实战
+http://www.jianshu.com/p/997336cf28e5
+http://blog.csdn.net/zxl333/article/details/50600772
+http://www.cnblogs.com/lxf20061900/p/4012847.html
+http://www.jb51.net/article/53542.htm
+
+#####配置flume-env.sh#####
+export JAVA_HOME=/usr/local/src/jdk1.7.0_80
+
+#####配置flume-conf.properties#####
+###agent名称为a1
+#####输入
+a1.sources=r1
+#####传输
+a1.channels=c1 c2
+#####输出
+a1.sinks=k1 k2
+
+a1.sources.r1.type=exec
+a1.sources.r1.channels=c1 c2
+a1.sources.r1.command=tail -f /usr/local/src/flume/myflume.log
+
+##监听tcp端口作为数据源############# 生产数据  # echo "hello idoall.org syslog" | nc localhost 5140
+a1.sources.r1.type=syslogtcp
+a1.sources.r1.host=127.0.0.1
+a1.sources.r1.port=5140
+a1.sources.r1.channels=c1 c2
+
+##监听http端口作为数据源########### 生产数据 # curl -X POST -d '[{ "headers" :{"a" : "a1","b" : "b1"},"body" : "hello word"}]' http://localhost:5142
+a1.sources.r1.type=org.apache.flume.source.http.HTTPSource
+a1.sources.r1.port=5142
+a1.sources.r1.channels=c1 c2
+
+
+##监控指定文件夹下文件内容,按行读出
+a1.sources.r1.type=spooldir
+a1.sources.r1.spoolDir=/usr/local/src/flume/logs
+a1.sources.r1.channels=c1 c2
+
+a1.channels.c1.type=memory
+a1.channels.c1.capacity=1000
+a1.channels.c1.transactionCapacity=100
+a1.channels.c2.type=file
+a1.channels.c2.checkpointDir=/usr/local/src/flume/checkpoint
+a1.channels.c2.dataDirs=/usr/local/src/flume/data
+
+##控制台展示
+a1.sinks.k1.type=logger
+a1.sinks.k1.channel=c1
+##文件写入
+a1.sinks.k2.type=FILE_ROLL
+a1.sinks.k2.channel=c2
+a1.sinks.k2.sink.directory=/usr/local/src/flume/files
+a1.sinks.k2.sink.rollInterval=0      ##多久后生产日志文件 0-从不生成
+##写入kafka
+a1.sinks.k1.type=org.apache.flume.sink.kafka.KafkaSink
+a1.sinks.k1.brokerList=192.168.157.131:9092,192.168.157.129:9092,192.168.157.130:9092
+a1.sinks.k1.topic=kafka-topic
+a1.sinks.k1.serializer.class=Kafka.serializer.StringEncoder
+a1.sinks.k1.channel=c1
+
+
+
+#####启动flume#####
+./flume-ng agent -c conf -f ../conf/flume-conf.properties -n a1 -Dflume.root.logger=DEBUG.console
+#####向文件写数据#####
+for i in {1..100};do echo "exec tail$i" >> /usr/local/src/flume/myflume.log;echo $i;sleep 0.1;done
