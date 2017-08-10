@@ -1,0 +1,28 @@
+###cassandra安装###
+#####blog#####
+http://dongxicheng.org/nosql/cassandra-install/
+http://www.cnblogs.com/zzd-zxj/p/6061378.html
+https://www.ibm.com/developerworks/cn/opensource/os-cn-cassandraxu1/index.html
+#####/etc/profile配置环境变量#####
+export CASSANDRA_HOME=/usr/local/src/apache-cassandra-2.2.9
+export PATH=$PATH:$CASSANDRA_HOME/bin
+#####cassandra.yaml#####
+cluster_name: 'Test Cluster'
+data_file_directories:
+    - /var/lib/cassandra/data
+commitlog_directory: /var/lib/cassandra/commitlog
+saved_caches_directory: /var/lib/cassandra/saved_caches
+seed_provider:
+    # Addresses of hosts that are deemed contact points. 
+    # Cassandra nodes use this list of hosts to find each other and learn
+    # the topology of the ring.  You must change this if you are running
+    # multiple nodes!
+    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+      parameters:
+          # seeds is actually a comma-delimited list of addresses.
+          # Ex: "<ip1>,<ip2>,<ip3>"
+          - seeds: "192.168.157.134"
+listen_address: 192.168.157.133
+rpc_address: 192.168.157.133
+######后台启动#####
+./cassandra -f            
