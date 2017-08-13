@@ -1,0 +1,4 @@
+###hive安装###
+#####mysql安装#####
+http://www.cnblogs.com/hwd-cnblogs/p/5213337.html
+#####
