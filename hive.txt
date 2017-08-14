@@ -1,4 +1,110 @@
 ###hive安装###
 #####mysql安装#####
 http://www.cnblogs.com/hwd-cnblogs/p/5213337.html
+hive sql操作
+http://f.dataguru.cn/thread-236344-1-1.html
+##启动mysql##
+service mysqld start
+授权远程连接mysql
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "123456";
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+
 #####
+###新建hive-site.xml###
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://172.17.38.67:3306/hive?createDatabaseIfNotExist=true</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.jdbc.Driver</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>root</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>123456</value>
+  </property>
+  <property>
+    <name>hive.metastore.schema.verification</name>
+    <value>false</value>	
+  </property>
+  <property>
+    <name>datanucleus.schema.autoCreateTables</name>
+    <value>true</value>	
+  </property>
+</configuration>
+
+######编辑hive-env.sh#####
+HADOOP_HOME=/usr/local/src/hadoop-2.8.1
+
+# Hive Configuration Directory can be controlled by:
+export HIVE_CONF_DIR=/usr/local/src/apache-hive-2.1.1-bin/conf
+
+# Folder containing extra ibraries required for hive compilation/execution can be controlled by:
+export HIVE_AUX_JARS_PATH=/usr/local/src/apache-hive-2.1.1-bin/lib
+
+
+####启动
+./hive
+
+
+创建表  create records(id int,label1 string,label2 string)
+在hadoop中会生成     /user/hive/warehouse/records  待分析的文件
+
+
+
+hive> select * from records;
+OK
+1	hello1	world1
+2	hello1	world2
+3	hello1	world3
+4	hello1	world4
+5	hello1	world5
+6	hello1	world6
+1	hello1	world1
+2	hello1	world2
+3	hello1	world3
+4	hello1	world4
+5	hello1	world5
+6	hello1	world6
+Time taken: 4.383 seconds, Fetched: 12 row(s)
+hive> select count(*) from records;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. tez, spark) or using Hive 1.X releases.
+Query ID = root_20170814045506_90d716b2-a0d5-4e58-b604-4abe3f631c53
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1502700814871_0001, Tracking URL = http://server1:8088/proxy/application_1502700814871_0001/
+Kill Command = /usr/local/src/hadoop-2.8.1/bin/hadoop job  -kill job_1502700814871_0001
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2017-08-14 04:55:50,586 Stage-1 map = 0%,  reduce = 0%
+2017-08-14 04:56:08,683 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 0.95 sec
+2017-08-14 04:56:17,062 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.1 sec
+MapReduce Total cumulative CPU time: 2 seconds 100 msec
+Ended Job = job_1502700814871_0001
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 2.1 sec   HDFS Read: 7945 HDFS Write: 102 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 100 msec
+OK
+12
+Time taken: 71.823 seconds, Fetched: 1 row(s)
+hive> 
+
