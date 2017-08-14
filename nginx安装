@@ -1,0 +1,52 @@
+###nginx安装###
+#####blog#####
+http://www.nginx.cn/nginxchswhyuseit
+#####
+安装gcc
+yum -y install gcc-c++
+安装pcre
+yum -y install pcre pcre-devel
+安装zlib
+yum install -y zlib zlib-devel
+安装openssl
+yum install -y openssl openssl-devel
+#####
+1-	tar -zxvf nginx-1.12.1.tar.gz
+2-	./configure
+
+-------------
+Configuration summary
+  + using system PCRE library
+  + OpenSSL library is not used
+  + using system zlib library
+
+  nginx path prefix: "/usr/local/nginx"
+  nginx binary file: "/usr/local/nginx/sbin/nginx"
+  nginx modules path: "/usr/local/nginx/modules"
+  nginx configuration prefix: "/usr/local/nginx/conf"
+  nginx configuration file: "/usr/local/nginx/conf/nginx.conf"
+  nginx pid file: "/usr/local/nginx/logs/nginx.pid"
+  nginx error log file: "/usr/local/nginx/logs/error.log"
+  nginx http access log file: "/usr/local/nginx/logs/access.log"
+  nginx http client request body temporary files: "client_body_temp"
+  nginx http proxy temporary files: "proxy_temp"
+  nginx http fastcgi temporary files: "fastcgi_temp"
+  nginx http uwsgi temporary files: "uwsgi_temp"
+  nginx http scgi temporary files: "scgi_temp"
+-------------
+3-	make
+4-	make install
+
+[root@server4 nginx-1.12.1]# whereis nginx
+nginx: /usr/local/nginx
+
+
+###启动###
+./usr/local/nginx/sbin/nginx
+###平滑重启reload###
+./usr/local/nginx/sbin/nginx -s reload
+./usr/local/nginx/sbin/nginx -s stop
+./usr/local/nginx/sbin/nginx -s quit
+
+###查看nginx进程
+ps aux|grep nginx
