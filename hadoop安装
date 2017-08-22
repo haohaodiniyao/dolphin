@@ -9,6 +9,23 @@ http://blog.csdn.net/wanglei_storage/article/details/52853034
 ####配置文件详解
 http://www.linuxidc.com/Linux/2012-07/66286.htm
 http://dongxicheng.org/mapreduce-nextgen/hadoop-yarn-configurations-resourcemanager-nodemanager/
+####HDFS HA QJM 高可用
+https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html
+
+实战
+http://blog.csdn.net/fengye_yulu/article/details/69490575
+
+
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh stop journalnode
+
+首先执行
+./hadoop-daemon.sh start journalnode
+./hdfs zkfc -formatZK
+
+然后在格式化
+./hadoop namenode -format
+#####hadoop2.8 HA配置
+http://blog.csdn.net/darkdragonking/article/details/72781782
 ###core-site.xml
 <property>
 	<name>hadoop.tmp.dir</name>
