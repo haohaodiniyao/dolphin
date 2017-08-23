@@ -11,6 +11,17 @@ http://www.linuxidc.com/Linux/2012-07/66286.htm
 http://dongxicheng.org/mapreduce-nextgen/hadoop-yarn-configurations-resourcemanager-nodemanager/
 ####HDFS HA QJM 高可用
 https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html
+####resource manager ha######
+http://debugo.com/yarn-rm-ha/
+http://debugo.com/yarn-rm-ha/#more-960
+
+
+####启动rm
+/usr/local/src/hadoop-2.8.1/sbin/yarn-daemon.sh start resourcemanager
+[root@server1 bin]# /usr/local/src/hadoop-2.8.1/bin/yarn rmadmin -getServiceState rm1
+active
+web page
+http://192.168.157.132:8188/cluster/cluster
 
 实战
 http://blog.csdn.net/fengye_yulu/article/details/69490575
@@ -110,3 +121,28 @@ http://192.168.157.129:8042/node
 
 ####多文件结果合并
 ./hdfs dfs -getmerge hdfs://192.168.157.128:9000/sogou/output1 /usr/local/src/result1
+
+
+
+
+
+
+
+
+
+
+
+
+
+1- /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start journalnode
+2- 格式化主节点
+/usr/local/src/hadoop-2.8.1/bin/hdfs namenode -format
+/usr/local/src/hadoop-2.8.1/bin/hdfs zkfc -formatZK
+3- 启动主节点
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
+4- standby节点同步元数据
+/usr/local/src/hadoop-2.8.1/bin/hdfs namenode -bootstrapStandby
+5- 启动standby namenode
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
+6- 启动所有 datanode
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start datanode
