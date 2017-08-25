@@ -1,3 +1,11 @@
+		      所属集群
+server1  cluster1 
+server4  cluster1
+server5  cluster2
+server6  cluster2
+
+
+
 ###hadoop-2.8.1.tar.gz安装
 安装博客http://blog.csdn.net/zzpzheng/article/details/73614526
 #####SSH免密码登录
@@ -14,6 +22,14 @@ https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAv
 ####resource manager ha######
 http://debugo.com/yarn-rm-ha/
 http://debugo.com/yarn-rm-ha/#more-960
+
+#####hadoop HA+Federation（高可用联邦）模式搭建指南
+http://www.jianshu.com/p/ccee07a31ca9
+#####hadoop ha federation#####
+http://www.cnblogs.com/meiyuanbao/p/3545929.html
+http://blog.csdn.net/lfq1532632051/article/details/42212245
+http://www.linuxidc.com/Linux/2014-10/107933.htm
+
 
 
 ####启动rm
@@ -126,18 +142,21 @@ http://192.168.157.129:8042/node
 
 
 
+#####yarn#####
+yarn资源调度和隔离(经典)
+http://dongxicheng.org/mapreduce-nextgen/hadoop-yarn-memory-cpu-scheduling/
 
 
-
-
+#####Hadoop 2.0 NameNode HA和Federation实践##### 
+http://www.sizeofvoid.net/hadoop-2-0-namenode-ha-federation-practice-zh/
 
 
 
 
 1- /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start journalnode
 2- 格式化主节点
-/usr/local/src/hadoop-2.8.1/bin/hdfs namenode -format
 /usr/local/src/hadoop-2.8.1/bin/hdfs zkfc -formatZK
+/usr/local/src/hadoop-2.8.1/bin/hdfs namenode -format -clusterId c1
 3- 启动主节点
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
 4- standby节点同步元数据
@@ -146,3 +165,5 @@ http://192.168.157.129:8042/node
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
 6- 启动所有 datanode
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start datanode
+7- 启动所有yarn 
+/usr/local/src/hadoop-2.8.1/sbin/start-yarn.sh
