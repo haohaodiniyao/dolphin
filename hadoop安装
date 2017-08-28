@@ -4,7 +4,9 @@ server4  cluster1
 server5  cluster2
 server6  cluster2
 
-
+HDFS Federation(联邦)
+验证通过
+http://www.cnblogs.com/gaogf/p/3982292.html
 
 ###hadoop-2.8.1.tar.gz安装
 安装博客http://blog.csdn.net/zzpzheng/article/details/73614526
@@ -153,17 +155,24 @@ http://www.sizeofvoid.net/hadoop-2-0-namenode-ha-federation-practice-zh/
 
 
 
-1- /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start journalnode
-2- 格式化主节点
+1- 启动journalnode
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start journalnode
+2- 格式化(HA主节点)
 /usr/local/src/hadoop-2.8.1/bin/hdfs zkfc -formatZK
+----- federation 共用clusterId c1
 /usr/local/src/hadoop-2.8.1/bin/hdfs namenode -format -clusterId c1
-3- 启动主节点
+3- 启动(HA主节点)
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
 4- standby节点同步元数据
 /usr/local/src/hadoop-2.8.1/bin/hdfs namenode -bootstrapStandby
 5- 启动standby namenode
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
+-----所有节点启动zkfc
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start zkfc
+
+
 6- 启动所有 datanode
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start datanode
-7- 启动所有yarn 
+7- 启动yarn
 /usr/local/src/hadoop-2.8.1/sbin/start-yarn.sh
+8-

@@ -1,0 +1,200 @@
+###hadoop安装2
+#####core-site.xml#####
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+	<name>hadoop.tmp.dir</name>
+	<value>/usr/local/src/hadoop/tmp</value>
+</property>
+<!-- cluster1 -> hdfs://cluster1		cluster2 -> hdfs://cluster2 -->
+<property>
+	<name>fs.defaultFS</name>
+	<value>hdfs://cluster2</value>
+</property>
+<property>
+	<name>ha.zookeeper.quorum</name>
+	<value>server1:2181,server2:2181,server3:2181</value>
+</property>
+</configuration>
+
+
+#####hdfs-site.xml#####
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/usr/local/src/hadoop/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/usr/local/src/hadoop/dfs/data</value>
+    </property>            
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>    
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/usr/local/src/hadoop/journaldata</value>
+    </property>    
+    <property>
+        <name>dfs.nameservices</name>
+        <value>cluster1,cluster2</value>
+    </property>
+    <!-- cluster1 -->
+    <property>
+        <name>dfs.ha.namenodes.cluster1</name>
+        <value>server1,server4</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.cluster1.server1</name>
+        <value>server1:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.cluster1.server1</name>
+        <value>server1:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.cluster1.server4</name>
+        <value>server4:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.cluster1.server4</name>
+        <value>server4:50070</value>
+    </property>
+ 
+    <!-- cluster2 -->   
+    <property>
+        <name>dfs.ha.namenodes.cluster2</name>
+        <value>server5,server6</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.cluster2.server5</name>
+        <value>server5:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.cluster2.server5</name>
+        <value>server5:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.cluster2.server6</name>
+        <value>server6:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.cluster2.server6</name>
+        <value>server6:50070</value>
+    </property>
+    
+    
+    <!-- 不同集群节点配置不同部分  下面3个配置-->
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://server1:8485;server4:8485;server5:8485/cluster2</value>
+    </property>    
+    
+    <property>
+        <name>dfs.ha.automatic-failover.enabled.cluster2</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.client.failover.proxy.provider.cluster2</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>    
+    
+    
+    
+    
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>
+	    sshfence
+        shell(/bin/true)
+	</value>
+    </property>
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/root/.ssh/id_rsa</value>
+    </property>
+    <property>
+        <name>dfs.ha.fencing.ssh.connect-timeout</name>
+        <value>30000</value>
+    </property>
+    <property>
+        <name>dfs.hosts</name>
+        <value>/usr/local/src/hadoop/datanode-allow.list</value>
+    </property>
+    <property>
+        <name>dfs.hosts.exclude</name>
+        <value>/usr/local/src/hadoop/datanode-deny.list</value>
+    </property>
+    <property>
+        <name>dfs.support.append</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.permissions</name>
+        <value>false</value>
+    </property>
+</configuration>
+#####slaves#####
+server1
+server4
+server5
+server6
+#####mapred-site.xml(所有节点)#####
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration> 
+  <property> 
+    <name>mapreduce.framework.name</name>  
+    <value>yarn</value> 
+  </property>
+</configuration>
+#####yarn-site.xml(所有节点)#####
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration> 
+  <property> 
+    <name>yarn.nodemanager.aux-services</name>  
+    <value>mapreduce_shuffle</value> 
+  </property>  
+  <property> 
+    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>  
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value> 
+  </property> 
+</configuration>
+
