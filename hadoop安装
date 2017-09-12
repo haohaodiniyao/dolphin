@@ -169,7 +169,7 @@ http://www.sizeofvoid.net/hadoop-2-0-namenode-ha-federation-practice-zh/
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start namenode
 -----所有节点启动zkfc
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start zkfc
-
+/usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh stop zkfc
 
 6- 启动所有 datanode
 /usr/local/src/hadoop-2.8.1/sbin/hadoop-daemon.sh start datanode

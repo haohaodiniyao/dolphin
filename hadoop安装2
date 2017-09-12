@@ -1,5 +1,5 @@
-###hadoop安装2
-#####core-site.xml#####
+###hadoop安装###配置###
+##### 1- core-site.xml#####
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
@@ -23,7 +23,10 @@
 	<name>hadoop.tmp.dir</name>
 	<value>/usr/local/src/hadoop/tmp</value>
 </property>
-<!-- cluster1 -> hdfs://cluster1		cluster2 -> hdfs://cluster2 -->
+<!-- 
+	集群cluster1 -> hdfs://cluster1		
+	集群cluster2 -> hdfs://cluster2 
+-->
 <property>
 	<name>fs.defaultFS</name>
 	<value>hdfs://cluster2</value>
@@ -35,7 +38,7 @@
 </configuration>
 
 
-#####hdfs-site.xml#####
+##### 2-hdfs-site.xml#####
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
