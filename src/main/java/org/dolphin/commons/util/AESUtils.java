@@ -13,6 +13,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.apache.commons.codec.binary.Hex;
+
 public class AESUtils {
 
 	public static byte[] encrypt(String content,String password){
@@ -71,10 +73,15 @@ public class AESUtils {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		String content = "美丽心情";
+		String content = "美丽心情123456helloworld";
 		String password = "hello";
 		byte[] encryptResult = encrypt(content,password);
-		byte[] decryptResult = decrypt(encryptResult,password);
+		//转16进制字符串
+		String hex = Hex.encodeHexString(encryptResult);
+		System.out.println(hex);
+		
+		byte[] encryptResult2 = Hex.decodeHex(hex.toCharArray());
+		byte[] decryptResult = decrypt(encryptResult2,password);
 		System.out.println(new String(decryptResult));
 	}
 
