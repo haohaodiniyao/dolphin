@@ -62,8 +62,7 @@ public class AESUtils {
 		}
 		try {
 			byte[] byteContent = content.getBytes(CHARSET_NAME);
-//			byte[] encodeFormat = key.getBytes(CHARSET_NAME);
-			byte[] encodeFormat = Base64.decodeBase64(key);
+			byte[] encodeFormat = key.getBytes(CHARSET_NAME);
 			SecretKeySpec secretKeySpec = new SecretKeySpec(encodeFormat, "AES");
 			byte[] initParam = IV_STRING.getBytes(CHARSET_NAME);
 			IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
@@ -104,8 +103,7 @@ public class AESUtils {
 		}
 		try {
 			byte[] encrytBytes = Base64.decodeBase64(content);
-//			byte[] decodeFormat = key.getBytes(CHARSET_NAME);
-			byte[] decodeFormat = Base64.decodeBase64(key);
+			byte[] decodeFormat = key.getBytes(CHARSET_NAME);
 			SecretKeySpec secretKeySpec = new SecretKeySpec(decodeFormat, "AES");
 			byte[] initParam = IV_STRING.getBytes(CHARSET_NAME);
 			IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
@@ -132,10 +130,10 @@ public class AESUtils {
 	}
 
 	public static void main(String[] args) {
-		String key = generateAESKey("helloworldhelloworldhelloworldhelloworld");
-		String encodeStr = encryptBase64String("美丽心情123!@#$%^&*()_-`~helloworld", key);
-		System.out.println("加密后->"+encodeStr);
-		String decodeStr = decrypt(encodeStr, key);
+		String key = generateAESKey("1234567890123456");
+//		String encodeStr = encryptBase64String("美丽心情123!@#$%^&*()_-`~helloworld", key);
+//		System.out.println("加密后->"+encodeStr);
+		String decodeStr = decrypt("488fRWkqjJxDJKmEdF9lSg==", "1234567890123456");
 		System.out.println("解密后->"+decodeStr);
 	}
 
