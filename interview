@@ -33,4 +33,24 @@ http://student-lp.iteye.com/blog/2309075
 ###微博架构师博客###
 https://timyang.net/page/51/
 
+####网络请求过程####
+数据库锁
+隔离级别
+aop
+设计模式
+慢查询
+mysql oracle sql
+hashmap
+arraylist linkedlist底层实现
+kafka消息队列
+幂等性
+spring事务管理
+jvm内存模型
+
+byte 8 -128~127
+short 16 -32768~32767
+int 32
+long 64
+
+
  

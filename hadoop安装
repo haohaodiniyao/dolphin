@@ -4,12 +4,13 @@ server4  cluster1
 server5  cluster2
 server6  cluster2
 
-HDFS Federation(联邦)
-验证通过
+###HDFS Federation(联邦)
+亲测OK
 http://www.cnblogs.com/gaogf/p/3982292.html
 
 ###hadoop-2.8.1.tar.gz安装
-安装博客http://blog.csdn.net/zzpzheng/article/details/73614526
+安装博客
+http://blog.csdn.net/zzpzheng/article/details/73614526
 #####SSH免密码登录
 http://blog.csdn.net/wanglei_storage/article/details/52853034
 生成秘钥对

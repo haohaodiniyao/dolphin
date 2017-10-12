@@ -10,3 +10,8 @@ https://segmentfault.com/search?q=hadoop
 http://jm.taobao.org/2016/08/04/heron-performance/?utm_source=tuicool&utm_medium=referral
 --博客虫
 http://www.blogchong.com/post/117.html
+--优秀博客
+http://shiyanjun.cn/archives/1371.html
+elasticsearch
+--58神剑
+http://zhuanlan.51cto.com/art/201707/544167.htm
