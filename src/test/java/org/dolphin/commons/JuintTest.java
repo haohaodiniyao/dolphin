@@ -63,12 +63,10 @@ public class JuintTest {
 //		Integer a = 100;
 //		int b = 100;
 //		System.out.println(a == b);
-		String a = "";
-		if(a.length()>=5){
-			System.out.println(a.substring(0,5));	
-		}else{
-			System.out.println(a);
-		}
+		String a = new String("账号：201000104560277 开户行：浙江温州鹿城农村商业银行股份有限公司营业部 地址：温州市鹿城区新城宏源路89号4楼 电话：0577-88667855 联行号：402333011011".getBytes(),"UTF-8");
+	
+		System.out.println(new String(a.getBytes("gb2312"),"iso-8859-1").length());
+		
 	}
 
 }
