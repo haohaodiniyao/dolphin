@@ -1,0 +1,152 @@
+####mesos集群安装####
+一、主节点
+1、设置/etc/hosts(将开头的127.0.0.1换成机器本身的IP地址)
+
+192.168.157.144   localhost localhost.localdomain localhost4 localhost4.localdomain4
+#::1          localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.157.144 master1
+192.168.157.145 master2
+192.168.157.146 master3
+192.168.157.147 slave1
+192.168.157.148 slave2
+192.168.157.149 slave3
+
+2、添加 mesos的yum源
+
+	节点 master1,master2,master3
+	
+	sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+
+3、安装mesos及相关软件
+
+	节点 master1,master2,master3
+
+    yum -y install mesos marathon
+
+    yum -y install mesosphere-zookeeper
+
+4、配置zookeeper
+
+    	节点 master1
+
+		touch /var/lib/zookeeper/myid
+		
+		echo 1 > /var/lib/zookeeper/myid
+
+    	节点 master2
+
+		touch /var/lib/zookeeper/myid
+		
+		echo 2 > /var/lib/zookeeper/myid
+
+    	节点 master3
+
+		touch /var/lib/zookeeper/myid
+		
+		echo 3 > /var/lib/zookeeper/myid
+
+   	节点  master1,master2,master3
+
+	vi /etc/zookeeper/conf/zoo.cfg
+
+	添加
+	
+	server.1=192.168.157.144:2888:3888
+	
+	server.2=192.168.157.145:2888:3888
+	
+	server.3=192.168.157.146:2888:3888
+
+   	节点 master1,master2,master3 
+
+	vi /etc/mesos/zk 
+
+	增加内容:zk://192.168.157.144:2181,192.168.157.145:2181,192.168.157.146:2181/mesos
+
+	节点 master1,master2,master3 
+
+	vi /etc/mesos-master/quorum
+
+	增加内容：2
+	
+	配置mesos和marathon
+
+		节点 master1
+		
+		echo 192.168.157.144 | sudo tee /etc/mesos-master/hostname
+		
+		mkdir -p /etc/marathon/conf/ && touch hostname
+		
+		echo 192.168.157.144 | sudo tee /etc/marathon/conf/hostname
+		
+		    节点master2
+		
+		echo 192.168.157.145 | sudo tee /etc/mesos-master/hostname
+		
+		mkdir -p /etc/marathon/conf/ && touch hostname
+		
+		echo 192.168.157.145 | sudo tee /etc/marathon/conf/hostname
+		
+		   节点 master3
+		
+		echo 192.168.157.146 | sudo tee /etc/mesos-master/hostname
+		
+		mkdir -p /etc/marathon/conf/ && touch hostname
+		
+		echo 192.168.157.146 | sudo tee /etc/marathon/conf/hostname
+
+		启动zookeeper mesos-master marathon
+
+    	节点 master1,master2,master3
+
+		systemctl start  zookeeper && systemctl start mesos-master && systemctl start marathon
+
+ 
+
+		systemctl disable mesos-slave
+
+二、 Slave节点安装
+
+    192.168.157.147 slave1
+    192.168.157.148 slave2
+    192.168.157.149 slave3
+
+1、关闭防火墙
+
+systemctl stop firewalld && systemctl disable firewalld
+
+2、添加 mesos的yum源
+
+sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+3、安装mesos
+
+yum -y install mesos
+
+4、配置master信息
+
+vi /etc/mesos/zk
+
+增加增加内容:
+
+zk://192.168.157.147:2181,192.168.157.148:2181,192.168.157.149:2181/mesos
+
+ 
+
+cd /etc/mesos-slave/
+
+touch hostname
+
+echo 192.168.157.147 | sudo tee /etc/mesos-slave/hostname
+5、启动mesos-slave
+
+systemctl start  mesos-slave  && systemctl enable  mesos-slave
+
+ 
+
+systemctl disable mesos-master
+
+三、 测试
+
+    访问 http://10.10.0.195:5050 mesos地址 
+    访问 http://10.10.0.195:8080 marathon地址，可利用其发布docker镜像并可调整应用数量 
+
