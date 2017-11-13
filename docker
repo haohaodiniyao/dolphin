@@ -1,0 +1,24 @@
+####docker####
+一、docker安装
+centos7
+1-安装
+yum install docker
+2-启动
+systemctl start docker
+3-版本
+docker --version
+4-查询镜像
+docker search nginx
+5-拉取镜像
+docker pull nginx
+6-查看镜像列表
+docker images
+7-
+二、docker命令
+###Error response from daemon: conflict: unable to delete 1269f3761db5 (must be forced) - image is being used by stopped container fef68e9ac0d1
+1-停止容器运行
+docker stop $(docker ps -a -q)
+2-强制删除镜像
+docker rm -f <image id>
+3-删除全部镜像
+docker rmi $(docker images -q)

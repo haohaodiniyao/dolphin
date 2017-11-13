@@ -111,6 +111,15 @@
     192.168.157.148 slave2
     192.168.157.149 slave3
 
+slave都安装docker并运行
+
+#mesos管理docker
+
+#echo 'docker,mesos' | tee /etc/mesos-slave/containerizers
+
+#systemctl restart mesos-slave
+
+
 1、关闭防火墙
 
 systemctl stop firewalld && systemctl disable firewalld
@@ -149,4 +158,8 @@ systemctl disable mesos-master
 
     访问 http://10.10.0.195:5050 mesos地址 
     访问 http://10.10.0.195:8080 marathon地址，可利用其发布docker镜像并可调整应用数量 
+    
+mesos管理docker    
+https://my.oschina.net/xxbAndy/blog/732860    
+http://heqin.blog.51cto.com/8931355/1712426
 
