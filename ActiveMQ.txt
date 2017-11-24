@@ -1,0 +1,4 @@
+###activemq###
+(1)http://blog.csdn.net/u010310183/article/details/51683141
+(2)activemq消息重发机制
+https://www.cnblogs.com/olmlo/p/4708660.html

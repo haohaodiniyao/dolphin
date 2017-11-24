@@ -1,19 +1,58 @@
 ####mesos集群安装####
+DC/OS安装
+Mesosphere DCOS快速部署手册
+http://blog.csdn.net/bogeli5/article/details/51605285
+http://blog.csdn.net/liumiaocn/article/details/52049434
+http://www.jianshu.com/p/0fc9a22a0b55
+
+http://chrisrc.me/dcos/
+http://www.cnblogs.com/popsuper1982/category/841329.html
+
+https://dcos.io/docs/1.10/installing/custom/gui/
+http://blog.csdn.net/bogeli5/article/details/51598199
+
+dcos 问题jira
+https://jira.mesosphere.com/projects/DCOS_OSS/issues/DCOS_OSS-1889?filter=allopenissues
+
+
+centos7关闭selinux并重启
+验证sestatus
+
+systemctl stop firewalld.service #停止firewall
+systemctl disable firewalld.service #禁止firewall开机启动
+firewall-cmd --state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running）
+
+
+
+
+
+
+
+
+
+
+
+
 一、主节点
 1、设置/etc/hosts(将开头的127.0.0.1换成机器本身的IP地址)
 
 192.168.157.144   localhost localhost.localdomain localhost4 localhost4.localdomain4
 #::1          localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.157.144 master1
-192.168.157.145 master2
-192.168.157.146 master3
-192.168.157.147 slave1
+192.168.157.154 master1
+192.168.157.153 master2
+192.168.157.152 master3
+192.168.157.150 slave1
 192.168.157.148 slave2
 192.168.157.149 slave3
+
+修改主机名称
+hostnamectl set-hostname master1
 
 2、添加 mesos的yum源
 
 	节点 master1,master2,master3
+	
+	http://repos.mesosphere.com/el/7/noarch/RPMS/mesosphere-el-repo-7-3.noarch.rpm
 	
 	sudo rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
 
@@ -21,7 +60,9 @@
 
 	节点 master1,master2,master3
 
-    yum -y install mesos marathon
+    yum -y install mesos
+    
+    yum -y install marathon
 
     yum -y install mesosphere-zookeeper
 
@@ -51,17 +92,15 @@
 
 	添加
 	
-	server.1=192.168.157.144:2888:3888
-	
-	server.2=192.168.157.145:2888:3888
-	
-	server.3=192.168.157.146:2888:3888
+server.1=master1:2888:3888
+server.2=master2:2888:3888
+server.3=master3:2888:3888
 
    	节点 master1,master2,master3 
 
 	vi /etc/mesos/zk 
 
-	增加内容:zk://192.168.157.144:2181,192.168.157.145:2181,192.168.157.146:2181/mesos
+	增加内容:zk://master1:2181,master2:2181,master3:2181/mesos
 
 	节点 master1,master2,master3 
 
@@ -73,37 +112,25 @@
 
 		节点 master1
 		
-		echo 192.168.157.144 | sudo tee /etc/mesos-master/hostname
+		echo master1 | sudo tee /etc/mesos-master/hostname && mkdir -p /etc/marathon/conf/ && touch hostname && echo master1 | sudo tee /etc/marathon/conf/hostname
 		
-		mkdir -p /etc/marathon/conf/ && touch hostname
-		
-		echo 192.168.157.144 | sudo tee /etc/marathon/conf/hostname
 		
 		    节点master2
 		
-		echo 192.168.157.145 | sudo tee /etc/mesos-master/hostname
-		
-		mkdir -p /etc/marathon/conf/ && touch hostname
-		
-		echo 192.168.157.145 | sudo tee /etc/marathon/conf/hostname
+		echo master2 | sudo tee /etc/mesos-master/hostname && mkdir -p /etc/marathon/conf/ && touch hostname && echo master2 | sudo tee /etc/marathon/conf/hostname
 		
 		   节点 master3
 		
-		echo 192.168.157.146 | sudo tee /etc/mesos-master/hostname
-		
-		mkdir -p /etc/marathon/conf/ && touch hostname
-		
-		echo 192.168.157.146 | sudo tee /etc/marathon/conf/hostname
+        echo master3 | sudo tee /etc/mesos-master/hostname && mkdir -p /etc/marathon/conf/ && touch hostname && echo master3 | sudo tee /etc/marathon/conf/hostname
 
 		启动zookeeper mesos-master marathon
 
     	节点 master1,master2,master3
 
-		systemctl start  zookeeper && systemctl start mesos-master && systemctl start marathon
-
- 
-
-		systemctl disable mesos-slave
+		systemctl start  zookeeper 
+		systemctl start mesos-master 
+		systemctl start marathon 
+		 systemctl disable mesos-slave
 
 二、 Slave节点安装
 
@@ -112,7 +139,7 @@
     192.168.157.149 slave3
 
 slave都安装docker并运行
-
+yum -y install docker
 #mesos管理docker
 
 #echo 'docker,mesos' | tee /etc/mesos-slave/containerizers
@@ -137,7 +164,7 @@ vi /etc/mesos/zk
 
 增加增加内容:
 
-zk://192.168.157.147:2181,192.168.157.148:2181,192.168.157.149:2181/mesos
+zk://master1:2181,master2:2181,master3:2181/mesos
 
  
 
@@ -145,14 +172,10 @@ cd /etc/mesos-slave/
 
 touch hostname
 
-echo 192.168.157.147 | sudo tee /etc/mesos-slave/hostname
+echo slave1 | sudo tee /etc/mesos-slave/hostname
 5、启动mesos-slave
 
-systemctl start  mesos-slave  && systemctl enable  mesos-slave
-
- 
-
-systemctl disable mesos-master
+systemctl start mesos-slave && systemctl enable mesos-slave && systemctl disable mesos-master
 
 三、 测试
 
@@ -162,4 +185,7 @@ systemctl disable mesos-master
 mesos管理docker    
 https://my.oschina.net/xxbAndy/blog/732860    
 http://heqin.blog.51cto.com/8931355/1712426
+
+marathon启动失败问题
+https://github.com/mesosphere/marathon/issues/2537
 

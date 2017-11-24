@@ -4,3 +4,12 @@ grep -B 5 'content' file
 grep -A 5 'content' file
 2-查找指定路径下文件
 find /usr/local/src/ -name 'file*'
+3-centos版本
+cat /etc/centos-release
+4-内核
+uname -r
+5-操作系统位数
+getconf LONG_BIT
+6-升级centos系统内核
+yum upgrade --assumeyes --tolerant
+yum update --assumeyes

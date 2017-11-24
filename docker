@@ -1,10 +1,17 @@
 ####docker####
+docker网络
+
+制作docker镜像
+https://segmentfault.com/a/1190000009544565
 一、docker安装
 centos7
 1-安装
+curl -fsSL https://get.docker.com/ | sh
+或
 yum install docker
 2-启动
 systemctl start docker
+systemctl stop docker
 3-版本
 docker --version
 4-查询镜像
@@ -13,7 +20,13 @@ docker search nginx
 docker pull nginx
 6-查看镜像列表
 docker images
-7-
+7-运行镜像
+docker run -d -i -t <imageID> /bin/bash
+8-查看启动的docker容器
+docker ps
+9-进入容器中
+docker exec -it <container id> /bin/bash
+
 二、docker命令
 ###Error response from daemon: conflict: unable to delete 1269f3761db5 (must be forced) - image is being used by stopped container fef68e9ac0d1
 1-停止容器运行
@@ -22,3 +35,10 @@ docker stop $(docker ps -a -q)
 docker rm -f <image id>
 3-删除全部镜像
 docker rmi $(docker images -q)
+4-设置docker镜像
+docker --registry-mirror=http://<my-docker-mirror-host> -d
+
+
+三、docker镜像制作
+四、使用docker compose搞定zookeeper集群
+https://segmentfault.com/a/1190000006907443
