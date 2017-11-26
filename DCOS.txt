@@ -1,0 +1,36 @@
+一、https://docs.mesosphere.com/1.10/installing/custom/system-requirements/install-docker-centos/
+二、https://docs.mesosphere.com/1.10/installing/custom/system-requirements/
+三、https://docs.mesosphere.com/1.10/installing/custom/cli/
+四、https://docs.mesosphere.com/1.7/archived-dcos-enterprise-edition/installing-enterprise-edition-1-3/
+
+http://<master-ip>:8181/exhibitor/v1/ui/index.html.
+
+
+
+config.yaml
+
+agent_list:
+- 192.168.157.153
+bootstrap_url: http://192.168.157.158:9999
+cluster_name: 'DCOS'
+exhibitor_storage_backend: static
+master_discovery: static 
+ip_detect_filename: /genconf/ip_detect
+log_directory: /genconf/logs
+master_list:
+- 192.168.157.152
+resolvers:
+- 8.8.4.4
+- 8.8.8.8
+security: disabled
+ssh_key_path: /genconf/ssh_key
+ssh_port: 22
+ssh_user: root
+
+
+ip_detect
+
+#!/usr/bin/env bash
+set -o nounset -o errexit
+export PATH=/usr/sbin:/usr/bin:$PATH
+echo $(ip addr show ens33 | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
