@@ -1,0 +1,5 @@
+###java###
+1)打开Java中的SecurityManager
+http://www.importnew.com/9751.html
+2)securitymanager thread
+

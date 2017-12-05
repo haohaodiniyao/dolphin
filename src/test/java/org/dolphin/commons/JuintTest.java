@@ -11,6 +11,10 @@ public class JuintTest {
 
 	@Test
 	public void test() throws Exception {
+		String str = "2017-12-10T16:40:00+09:00";
+		System.out.println(str.substring(0, 10));
+		System.out.println(str.substring(11, 16));
+		
 //		System.out.println(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm"));
 //		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.format(new Date()));
 //		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_TIME_FORMAT.format(new Date()));
@@ -63,9 +67,9 @@ public class JuintTest {
 //		Integer a = 100;
 //		int b = 100;
 //		System.out.println(a == b);
-		String a = new String("账号：201000104560277 开户行：浙江温州鹿城农村商业银行股份有限公司营业部 地址：温州市鹿城区新城宏源路89号4楼 电话：0577-88667855 联行号：402333011011".getBytes(),"UTF-8");
-	
-		System.out.println(new String(a.getBytes("gb2312"),"iso-8859-1").length());
+//		String a = new String("账号：201000104560277 开户行：浙江温州鹿城农村商业银行股份有限公司营业部 地址：温州市鹿城区新城宏源路89号4楼 电话：0577-88667855 联行号：402333011011".getBytes(),"UTF-8");
+//	
+//		System.out.println(new String(a.getBytes("gb2312"),"iso-8859-1").length());
 		
 	}
 

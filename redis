@@ -1,0 +1,4 @@
+###redis###
+1)redis内存淘汰机制
+http://blog.jobbole.com/105335/
+http://www.redis.cn/topics/lru-cache.html
