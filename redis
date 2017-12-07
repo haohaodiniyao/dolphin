@@ -1,4 +1,67 @@
 ###redis###
+博客
+TwemProxy
+http://blog.csdn.net/houjixin/article/details/52101001
+
+redis安装
+http://www.redis.cn/download.html
+centos7
+#########
+wget http://download.redis.io/releases/redis-4.0.1.tar.gz
+tar -zxvf redis-4.0.1.tar.gz
+yum -y install gcc
+cd redis-4.0.1
+http://blog.csdn.net/fygkchina/article/details/51006976
+make MALLOC=libc
+******************
+cd redis-4.0.1/redis.conf
+注释
+# bind 127.0.0.1
+#保护模式修改为no  外网就可以访问redis
+protected-mode no
+重启redis要指定redis.conf否则修改的配置不生效
+./redis-server ../redis.conf
+******************
+cd redis-4.0.1/src
+./redis-server
+./redis-cli
+##########################################
+https://github.com/twitter/twemproxy
+twemproxy (nutcracker) 安装
+yum -y install git
+git clone https://github.com/twitter/twemproxy.git
+yum -y install autoconf
+yum -y install libtool
+yum -y install automake
+cd twemproxy
+autoreconf -fvi
+./configure --enable-debug=full
+make
+rc/nutcracker -h
+
+启动 -d后台启动 -c配置文件
+./nutcracker -d -c /usr/local/src/twemproxy/conf/nutcracker.yml -p /usr/local/src/twemproxy/run/redisproxy.pid -o /usr/local/src/twemproxy/run/redisproxy.log
+
+
+
+-------------
+http://jinnianshilongnian.iteye.com/blog/2186787
+此处根据要注意，如上安装方式在有些服务器上可能在大量如mset时可能导致Twemproxy崩溃，需要使用
+Use newer version of gcc (older version of gcc has problems)
+Use CFLAGS="-O1" ./configure && make
+Use CFLAGS="-O3 -fno-strict-aliasing" ./configure && make
+autoreconf -fvi && ./configure needs automake and libtool to be installed
+-------------
+
+
+
+
 1)redis内存淘汰机制
 http://blog.jobbole.com/105335/
 http://www.redis.cn/topics/lru-cache.html
+2)
+使用Twemproxy缓存集群，通过lvs做负载均衡和高可用(HA high available)
+Twemproxy也叫nutcraker，是twitter开源的一个redis和memcache代理服务器，分发规则是按照一致性hash进行分发和存储
+Twemproxy并不支持所有的redis客户端操作命令 比如常见的keys select以及redis管理命令
+Twemproxy不支持动态扩容，并且支持自动剔除，只能当缓存用
+所有数据通过Twemproxy一致性hash分配到后端的redis、memcache节点，如果后端某个redis、memcache节点挂掉，会被自动剔除，对应的数据也会丢失
