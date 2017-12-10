@@ -12,3 +12,34 @@ Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专�
 极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，
 使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，
 就可以很方便地写出高性能的并发程序。所以说，Java 8 中首次出现的 java.util.stream 是一个函数式语言+多核时代综合影响的产物。
+
+completableFuture#经典
+http://blog.csdn.net/salonzhou/article/details/50777443
+
+
+#####java8#####
+1)
+Function.apply in java 8
+javabean中定义Function
+2)
+@FunctionalInterface自定义接口，使用lambda表达式
+3)
+java8接口默认(default)方法是要有方法实现的
+java8接口静态(static)方法是允许有方法实现
+默认方法可以直接调用静态方法，接口实现类可以直接调用接口静态方法
+4）java8可以同时实现两个接口  public class Location implements Village, City
+5）java8的断言predicate可以当做Boolean条件判断 predicate.test()
+6)java8的consumer foreach  (Int Long Double -> Consumer)
+7)并行parallelStream和sequential顺序stream(流)
+8)java8内部遍历操作Internal( list.forEach(e->e.setSal(e.getSal()*2));)
+9)java8 clock时钟 ZoneId时区
+10)java8 DayOfWeek (DayOfWeek.of(2)相当于枚举 星期二)
+Duration.ofHours(1).getSeconds() 一小时3600s
+11)LocalTime LocalDate LocalDateTime
+12)DateTimeFormatter DateTimeFormatterBuilder
+13)MonthDay Month OffsetDateTime OffsetTime
+14)Optional.of() map orElse flatMap
+15)讲解java8 optional  http://www.importnew.com/6675.html
+16)Period时间区间   Year YearMonth ZonedDateTime 都是java.time下面的
+17)java8 Supplier Supplier<Item> supplier = Item::new;
+18)BiConsumer BiFunction BiPredicate
