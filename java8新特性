@@ -4,7 +4,7 @@ http://blog.csdn.net/zhou85xin/article/details/52171190
 https://www.concretepage.com/java/jdk-8/java-8-stream-sorted-example
 ***经典***
 https://www.concretepage.com/java/jdk-8/java-8-concat-streams-lists-sets-arrays-example
-
+------text---------------------------
 Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。
 它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。
 Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），
@@ -13,6 +13,24 @@ Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专�
 使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，
 就可以很方便地写出高性能的并发程序。所以说，Java 8 中首次出现的 java.util.stream 是一个函数式语言+多核时代综合影响的产物。
 
+https://www.cnblogs.com/pkufork/p/java_8.html
+一、lambda表达式，函数式编程
+二、引入函数式接口（一个接口只有一个普通方法，接口使用特殊注解@FunctionalInterface）
+三、接口的默认方法和静态方法都可以有默认实现
+四、方法引用 （构造器引用 Class::new） 静态方法引用（Class::static_method）任意方法引用(Class:method) 对象实例方法引用(instance::method)
+五、重复注解(@Repeatable)
+六、扩展注解的支持
+Java 8扩展了注解的上下文，几乎可以为任何东西添加注解，包括局部变量、泛型类、父类与接口的实现，连方法的异常也能添加注解
+七、java8引入Optional类防止空指针异常，Optional类实际上是个容器，可以保存任意类型的值、或者null，使用Optional类就不用显示进行空指针检查
+八、Stream API是把真正的函数式编程风格引入到Java中。其实简单来说可以把Stream理解为MapReduce，当然Google的MapReduce的灵感也是来自函数式编程。她其实是一连串支持连续、并行聚集操作的元素。从语法上看，也很像linux的管道、或者链式编程，代码写起来简洁明了，非常酷帅！
+九、Date、Time API （Clock、LocalDate、LocalTime、LocalDateTime。。。）
+十、JavaScript引擎Nashorn
+Nashorn允许在JVM上开发运行JavaScript应用，允许Java与JavaScript相互调用。
+十一、Base64成为标准类库
+十二、更好类型推测机制
+十三、编译器优化
+十四、并行parallel
+------------------------------------
 completableFuture#经典
 http://blog.csdn.net/salonzhou/article/details/50777443
 
