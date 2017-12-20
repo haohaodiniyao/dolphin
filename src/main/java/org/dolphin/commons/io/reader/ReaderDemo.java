@@ -8,6 +8,7 @@ import java.io.FileWriter;
  * 缓冲流
  * 字符输入流(读取) FileReader BufferedReader
  * 字符输出流(写入) FileWriter BufferedWrIter
+ * 可以读取一行
  * @author yaokai
  *
  */

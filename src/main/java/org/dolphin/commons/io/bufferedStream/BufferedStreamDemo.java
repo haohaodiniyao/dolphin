@@ -25,9 +25,7 @@ public class BufferedStreamDemo {
 			bos.write(buf, 0, len);
 		}
 		bos.close();
-		fos.close();
 		bis.close();
-		fis.close();
 	}
 
 }

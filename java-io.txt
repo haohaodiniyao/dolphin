@@ -1,7 +1,18 @@
 ###java io流
 http://blog.csdn.net/iispring/article/details/46821033
+http://blog.csdn.net/zhao123h/article/details/52826682
 1-可序列化对象必须实现接口Serializable或者Externalizable
 序列化版本标识符
 private static final long serialVersionUID;
 没有显示声明，运行时java自动生成
 2-关闭包装流，会自动关闭被包装的底层流
+
+字节输入流InputStream(ByteArrayInputStream、FileInputStream、ObjectInputStream(对象流序列化对象)
+、PipedInputStream(管道流线程间通信)、SequenceInputStream(合并输入字节流)
+、FilterInputStream(内部包含InputStream字段，再次基础上进行封装，达到装饰效果))
+字节输出流OutputStream
+字符输入流Reader
+字符输出流Writer
+
+FilterInputStream子类(BufferedInputStream(缓冲效果)、DataInputStream(能以一种机器无关的方式，读取和写入java基本类型和String类型))
+为什么使用装饰模式而不是继承
