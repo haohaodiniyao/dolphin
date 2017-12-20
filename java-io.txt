@@ -1,6 +1,7 @@
 ###java io流
 http://blog.csdn.net/iispring/article/details/46821033
 http://blog.csdn.net/zhao123h/article/details/52826682
+https://www.cnblogs.com/heartstage/p/3391070.html
 1-可序列化对象必须实现接口Serializable或者Externalizable
 序列化版本标识符
 private static final long serialVersionUID;
