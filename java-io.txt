@@ -1,2 +1,7 @@
 ###java io流
 http://blog.csdn.net/iispring/article/details/46821033
+1-可序列化对象必须实现接口Serializable或者Externalizable
+序列化版本标识符
+private static final long serialVersionUID;
+没有显示声明，运行时java自动生成
+2-关闭包装流，会自动关闭被包装的底层流

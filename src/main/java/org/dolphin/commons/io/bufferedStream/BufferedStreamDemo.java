@@ -5,6 +5,9 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 /**
+ * 字节流和缓冲流
+ * FileInputStream BufferedInputStream
+ * FileOutputStream BufferedOutputStream
  * 自带缓冲区的流 默认8192字节8k
  * @author yaokai
  *

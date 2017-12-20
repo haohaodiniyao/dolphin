@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 /**
+ * 对象字节流(序列化对象,可用于网络传输,)
  * ObjectOutputStream
  * ObjectInputStream
  * @author yaokai
