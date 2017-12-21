@@ -1,0 +1,3 @@
+###java NIO
+http://ifeve.com/java-nio-channel-to-channel/
+http://tutorials.jenkov.com/java-nio/scatter-gather.html
