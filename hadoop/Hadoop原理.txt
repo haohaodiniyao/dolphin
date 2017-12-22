@@ -1,8 +1,33 @@
 ###hadoop原理###
+
 https://www.tuicool.com/articles/Bj6N3ya
+
+HDFS机架感知
+http://www.linuxidc.com/Linux/2016-09/134885.htm
+
 question->
 1-分布式文件系统HDFS读取过程
-2-写入过程
+2-分布式文件系统HDFS写入过程
+3-HDFS高可用(HA)(主备NameNode)
+http://blog.csdn.net/pangjiuzala/article/details/50187665
+4-HDFS联邦机制
+5-Hadoop两大核心
+MapReduce(map:任务的分解;reduce:结果的汇总)
+HDFS(NameNode、DataNode、Client)
+海量数据存储（HDFS）
+高可靠、高吞吐量的分布式文件系统
+HDFS包含三部分组成：
+NameNode：运行数据会使用内存中的数据；接受客户端的读写服务；保存元数据；元数据保存在fsimage中，操作日志保存在ediets里
+SecondaryNameNode：帮助NameNode将EDIETS文件FSImage合并。
+DataNode：保存block（机架策略存放副本），在启动时将block信息上报给NameNode；默认每3秒发送一个心跳给NameNode，如果NameNode10分钟没有收到心跳，就认为lost，copy这个节点所有的block到别的DataNode。
+海量数据分析（MapReduce）
+分布式离线并行计算框架
+核心思想：
+1、分而治之
+2、移动计算比移动数据的代价更小
+工作流程：input-------->split--------->Map--------->Shuffler--------->Reduce-------->output
+分布式资源调度（YARN）
+Hadoop 2.0中的MapReduce框架，负责任务调度和资源管理
 
 
 
