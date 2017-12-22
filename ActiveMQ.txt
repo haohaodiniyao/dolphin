@@ -2,3 +2,57 @@
 (1)http://blog.csdn.net/u010310183/article/details/51683141
 (2)activemq消息重发机制
 https://www.cnblogs.com/olmlo/p/4708660.html
+
+
+一、什么时候使用ActiveMQ
+1-异步调用
+2-一对多通信
+3-做多个系统的集成，同构、异构
+4-作为RPC的替代
+5-多个应用解耦
+6-作为事件驱动架构的幕后支撑
+7-提高系统的可伸缩性
+二、ActiveMQ优化1
+ActiveMQ的性能依赖于很多因素
+1-网络拓扑，比如：嵌入、主从复制、网络连接
+2-transport协议
+3-service的质量，比如topic还是queue，是否持久化，是否需要重新投递，消息超时等
+4-硬件、网络、JVM和操作系统等
+5-生产者数量和消费者数量
+6-消息分发要经过的destination数量，以及消息的大小等
+非持久化消息比持久化消息更快
+1-非持久化发送消息是异步的，Producer不需要等待Consumer的receipt消息
+2-而持久化是要把消息先存储起来，然后再传递
+尽量使用异步投递消息
+1-cf.setUseAsyncSend(true);
+Transaction比Non-transaction更快
+可以考虑内嵌启动broker，这样应用和Broker之间可以使用VM协议通讯，速度更快
+尽量使用基于文件的消息存储方案，比如使用KahaDB的方式
+调整Prefetch Limit,ActiveMQ默认的prefetch大小不同的：
+http://activemq.apache.org/what-is-the-prefetch-limit-for.html
+Prefetch policy设置示例：
+ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory();
+Properties props = new Properties();
+props.setProperty("prefetch.queuePrefetch","1000");
+props.setProperty("prefetch.queueBrowserPrefetch","500");
+props.setProperty("prefetch.durableTopicPrefetch","1000");
+props.setProperty("prefetch.topicPrefetch","32767");
+cf.setProperties(props);
+也可以在创建Destination的时候设置prefetch.size
+Queue queue = new ActiveMQQueue("TEST.QUEUE?consumer.prefetchSize=10")
+MessageConsumer consumer = session.createConsumer(queue);
+可以考虑生产者流量控制，可以通过xml配置，代码开启方式如下：
+cf.setProducerWindowSize(1024000);
+可以考虑关闭消息的复制功能，也能部分提高性能，在连接工厂上设置，如下:
+ActiveMQConnectionFactory cf = ...
+cf.setCopyMessageOnSend(false);
+调整TCP协议
+TCP协议是ActiveMQ中最常使用的协议，常见有如下配置会影响协议性能：
+1-socketBufferSize：socket的缓存大小，默认是65536
+2-tcpNoDelay：默认是false
+示例：
+String url = "failover://(tcp://localhost:61616?tcpNoDelay=true)";
+消息投递和消息确认
+官方建议使用自动确认的模式，同时还可以开启优化确认的选项，如下
+cf.setOptimizeAcknowledge(true);
+
