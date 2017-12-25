@@ -1,0 +1,66 @@
+###nginx使用keepalived高可用HA
+Keepalived是一种高性能的服务器高可用或热备解决方案，Keepalived可以用来防止服务器单点故障的发生，通过配合Nginx可以实现web前端服务的高可用。
+Keepalived以VRRP协议为实现基础，用VRRP协议来实现高可用性(HA)。
+VRRP(Virtual Router Redundancy Protocol)协议是用于实现路由器冗余的协议，VRRP协议将两台或多台路由器设备虚拟成一个设备，对外提供虚拟路由器IP(一个或多个)，
+而在路由器组内部，如果实际拥有这个对外IP的路由器，如果工作正常的话，就是MASTER，或者是通过算法选举产生，MASTER实现针对虚拟路由器IP的各种网络功能，
+如ARP请求，ICMP，以及数据的转发等。
+其它设备不拥有该虚拟IP，状态是BACKUP，除了接收MASTER的VRRP状态通告信息外，不执行对外的网络功能。
+当主机失效时，BACKUP将接管原先MASTER的网络功能。
+VRRP协议使用多播数据来传输VRRP数据，VRRP数据使用特殊的虚拟源MAC地址发送数据而不是自身网卡的MAC地址，VRRP运行时只有MASTER路由器定时发送VRRP通告信息，
+表示MASTER工作正常以及虚拟路由器IP组，BACKUP只接收VRRP数据，不发送数据，如果一定时间内没有接收到MASTER的通告信息，
+各BACKUP将宣告自己成为MASTER，发送通告信息，重新进行MASTER选举状态。
+
+
+######
+centos7
+######
+
+
+1-安装nginx所需依赖包
+yum -y install gcc gcc-c++ make automake autoconf libtool pcre pcre-devel zlib zlib-devel openssl openssl-devel
+2-编译安装nginx
+上传nginx到/usr/local/src/
+cd /usr/local/src
+tar -zxvf nginx-1.12.2.tar.gz
+cd nginx-1.12.2
+./configure --prefix=/usr/local/nginx
+make && make install
+vi /usr/local/nginx/conf/nginx.conf
+修改 user root;
+# 端口修改为88
+修改 listen 88;
+vi /usr/local/nginx/html/index.html
+# 区分2个nginx
+3-系统防火墙打开对应的端口88
+4-测试nginx配置文件是否OK
+/usr/local/nginx/sbin/nginx -t
+5-启动nginx
+/usr/local/nginx/sbin/nginx
+6-重启
+/usr/local/nginx/sbin/nginx -s reload
+7-设置开机启动
+vi /etc/rc.local
+# 加入
+/usr/local/nginx/sbin/nginx
+# 执行  
+# http://blog.csdn.net/su4416160/article/details/72625627
+chmod +x /etc/rc.d/rc.local
+
+
+###安装keepalived###
+1-依赖包
+yum -y install gcc make libnl libnl-devel libnfnetlink-devel openssl-devel  
+2-上传keepalived-1.3.9.tar.gz到/usr/local/src
+3-
+cd keepalived-1.3.9
+4-
+./configure --prefix=/usr/local/keepalived
+5-
+make && make install
+
+
+******使用yum安装******
+yum -y install keepalived
+vi /etc/keepalived/keepalived.conf
+systemctl start keepalived.service
+systemctl stop keepalived.service
