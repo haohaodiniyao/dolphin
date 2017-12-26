@@ -64,3 +64,5 @@ yum -y install keepalived
 vi /etc/keepalived/keepalived.conf
 systemctl start keepalived.service
 systemctl stop keepalived.service
+日志
+tail -f /var/log/messages
