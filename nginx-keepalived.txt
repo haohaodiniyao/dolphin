@@ -66,3 +66,10 @@ systemctl start keepalived.service
 systemctl stop keepalived.service
 日志
 tail -f /var/log/messages
+
+centos7.3
+安装ifconfig
+yum -y install net-tools
+安装traceroute
+yum -y install traceroute
+https://www.cnblogs.com/neo98/articles/6185737.html
