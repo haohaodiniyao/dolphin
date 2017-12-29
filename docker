@@ -9,7 +9,7 @@ centos7
 1-安装
 curl -fsSL https://get.docker.com/ | sh
 或
-yum install docker
+yum -y install docker
 2-启动
 systemctl start docker
 systemctl stop docker

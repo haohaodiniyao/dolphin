@@ -11,7 +11,7 @@
   http://blog.csdn.net/sadfishsc/article/details/17304703
   http://www.cnblogs.com/xhan/p/3701459.html
   https://www.percona.com/blog/2014/10/28/how-to-deal-with-mysql-deadlocks/
-  --使用cassandra存储上亿数据
+  --使用cassandra存储上亿数据(docker安装cassandra)
   http://f.dataguru.cn/article-11147-1.html
   -- 开源日志系统
   http://www.ttlsa.com/log-system/scribe-chukwa-kafka-flume-log-system-contrast/
