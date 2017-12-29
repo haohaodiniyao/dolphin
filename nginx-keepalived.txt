@@ -12,13 +12,13 @@ VRRP协议使用多播数据来传输VRRP数据，VRRP数据使用特殊的虚�
 
 
 ######
-centos7
+centos7.3
 ######
 
 
-1-安装nginx所需依赖包
+1- 安装nginx所需依赖包
 yum -y install gcc gcc-c++ make automake autoconf libtool pcre pcre-devel zlib zlib-devel openssl openssl-devel
-2-编译安装nginx
+2- 编译安装nginx
 上传nginx到/usr/local/src/
 cd /usr/local/src
 tar -zxvf nginx-1.12.2.tar.gz
@@ -31,15 +31,15 @@ vi /usr/local/nginx/conf/nginx.conf
 修改 listen 88;
 vi /usr/local/nginx/html/index.html
 # 区分2个nginx
-3-系统防火墙打开对应的端口88
-4-测试nginx配置文件是否OK
+3- 系统防火墙打开对应的端口88或者关闭防火墙
+4- 测试nginx配置文件是否OK
 /usr/local/nginx/sbin/nginx -t
-5-启动nginx
+5- 启动nginx
 /usr/local/nginx/sbin/nginx
-6-重启
+6- 平滑重启
 /usr/local/nginx/sbin/nginx -s reload
 7-设置开机启动
-vi /etc/rc.local
+vi /etc/rc.d/rc.local
 # 加入
 /usr/local/nginx/sbin/nginx
 # 执行  
@@ -49,7 +49,7 @@ chmod +x /etc/rc.d/rc.local
 
 ###安装keepalived###
 1-依赖包
-yum -y install gcc make libnl libnl-devel libnfnetlink-devel openssl-devel  
+yum -y install gcc make libnl libnl-devel libnfnetlink-devel openssl-devel ipvsadm  
 2-上传keepalived-1.3.9.tar.gz到/usr/local/src
 3-
 cd keepalived-1.3.9
@@ -60,6 +60,9 @@ make && make install
 
 
 ******使用yum安装******
+http://blog.sina.com.cn/s/blog_d0473b3f010198vg.html
+genhash -s 192.168.157.155 -p 88 -u /index.html
+
 yum -y install keepalived
 vi /etc/keepalived/keepalived.conf
 systemctl start keepalived.service
@@ -76,3 +79,33 @@ https://www.cnblogs.com/neo98/articles/6185737.html
 ############
 nginx安装 centos7.3
 https://www.cnblogs.com/Robert-huge/p/6003934.html
+
+
+
+***************************
+[root@centos7 nginx-1.12.2]# /usr/bin/genhash -s 192.168.157.155 -p 88 -u http://192.168.157.155:88/index.html
+MD5SUM = e3eb0a1df437f3f97a64aca5952c8ea0
+
+[root@centos7 nginx-1.12.2]# systemctl start keepalived.service
+[root@centos7 nginx-1.12.2]# systemctl status keepalived.service
+● keepalived.service - LVS and VRRP High Availability Monitor
+   Loaded: loaded (/usr/lib/systemd/system/keepalived.service; disabled; vendor preset: disabled)
+   Active: active (running) since Fri 2017-12-29 10:32:26 CST; 7s ago
+  Process: 4165 ExecStart=/usr/sbin/keepalived $KEEPALIVED_OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 4166 (keepalived)
+   CGroup: /system.slice/keepalived.service
+           ├─4166 /usr/sbin/keepalived -D
+           ├─4167 /usr/sbin/keepalived -D
+           └─4168 /usr/sbin/keepalived -D
+
+Dec 29 10:32:28 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:28 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:28 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:32 centos7 Keepalived_healthcheckers[4167]: SSL handshake/communication error connecting to server [192.168.157.155]:88.
+Dec 29 10:32:33 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:33 centos7 Keepalived_vrrp[4168]: VRRP_Instance(VI_1) Sending/queueing gratuitous ARPs on ens33 for 192.168.157.160
+Dec 29 10:32:33 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:33 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:33 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+Dec 29 10:32:33 centos7 Keepalived_vrrp[4168]: Sending gratuitous ARP on ens33 for 192.168.157.160
+***************************
