@@ -1,0 +1,28 @@
+#java个版本新特性#
+##jdk1.5##
+1)自动装箱和拆箱
+https://www.cnblogs.com/danne823/archive/2011/04/22/2025332.html
+https://www.cnblogs.com/dolphin0520/p/3780005.html
+java基本数据类型表示数值范围
+http://www.runoob.com/java/java-basic-datatypes.html
+https://www.cnblogs.com/simplefrog/archive/2012/07/15/2592011.html
+2)泛型
+http://blog.csdn.net/gafeng123456/article/details/50764667
+3)增强foreach，简化集合遍历
+4)枚举
+5)可变参数(必须是最后一个参数,否则编译报错)
+6)静态导入
+##jdk1.6##
+##jdk1.7##
+1)switch支持String类型
+byte short int char enum
+//Cannot switch on a value of type long. Only convertible int values, strings or enum variables are permitted
+2)泛型实现自动类型推断
+3)支持二进制字面值(二进制ob11 3)
+##jdk1.8##
+
+#Cookies和Session的区别#
+http://blog.csdn.net/axin66ok/article/details/6175522
+#锁
+1)数据库的悲观锁和乐观锁
+http://www.importnew.com/21037.html

@@ -4,3 +4,4 @@ http://www.cnblogs.com/java-my-life/archive/2012/03/28/2418836.html
 1-简单工厂(工厂根据不同的参数创建对应的产品)
 2-工厂方法
 3-抽象工厂
+4-拦截过滤器模式   http://www.runoob.com/design-pattern/intercepting-filter-pattern.html

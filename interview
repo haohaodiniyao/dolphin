@@ -58,5 +58,8 @@ https://github.com/GavinHwa/alibaba/blob/master/%E7%A0%94%E5%8F%91Java/%E9%98%BF
 ####优秀博客
 http://www.ityouknow.com/
 
+String为什么是final类呢
+###主要是为了“效率” 和 “安全性” 的缘故。若 String允许被继承, 由于它的高度被使用率, 可能会降低程序的性能，所以String被定义成final。
+
 
  
