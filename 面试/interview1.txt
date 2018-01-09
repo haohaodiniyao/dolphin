@@ -26,3 +26,7 @@ http://blog.csdn.net/axin66ok/article/details/6175522
 #锁
 1)数据库的悲观锁和乐观锁
 http://www.importnew.com/21037.html
+2)java中锁
+http://www.importnew.com/19472.html
+#StringBuffer和StringBuilder区别
+https://www.cnblogs.com/A_ming/archive/2010/04/13/1711395.html
