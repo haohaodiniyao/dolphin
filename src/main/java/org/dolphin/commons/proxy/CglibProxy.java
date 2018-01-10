@@ -19,12 +19,13 @@ public class CglibProxy implements MethodInterceptor {
 	}
 
 	@Override
-	public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+	public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
 		Object res = null;
 		Throwable exception = null;
 		try {
 			System.out.println("my before...");
-			res = method.invoke(this.target, args);
+			res = methodProxy.invoke(this.target, args);
+//			res = method.invoke(this.target, args);
 			System.out.println("my after...");
 		} catch (InvocationTargetException e) {
 			exception = e.getTargetException();
@@ -39,13 +40,4 @@ public class CglibProxy implements MethodInterceptor {
 		enhancer.setCallback(this);
 		return enhancer.create();
 	}
-	
-	public Object getTarget() {
-		return target;
-	}
-
-	public void setTarget(Object target) {
-		this.target = target;
-	}
-
 }
