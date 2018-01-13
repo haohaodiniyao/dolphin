@@ -1,0 +1,4 @@
+###concurrenthashmap原理
+http://www.infoq.com/cn/articles/ConcurrentHashMap/
+###余数hash和一致性hash
+http://blog.jobbole.com/98733/
