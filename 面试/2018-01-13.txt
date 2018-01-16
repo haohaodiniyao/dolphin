@@ -19,3 +19,5 @@ set key value NX EX max-lock-time
 http://www.redis.cn/commands/set.html
 ###分布式ID生成系统
 http://www.sohu.com/a/205005675_659464
+###支付网络异常，如何幂等性
+http://blog.csdn.net/github_36032947/article/details/78386551
