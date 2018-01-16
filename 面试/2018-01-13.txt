@@ -2,3 +2,20 @@
 http://www.infoq.com/cn/articles/ConcurrentHashMap/
 ###余数hash和一致性hash
 http://blog.jobbole.com/98733/
+###深度复制和浅度复制
+https://www.cnblogs.com/avivahe/p/5710945.html
+###哈希算法和哈希表
+https://wenku.baidu.com/view/1ddde0d62e3f5727a4e96283.html
+###库存系统和仓库系统设计
+http://www.woshipm.com/pd/454390.html
+###高访问量系统的静态化架构设计
+http://www.doc88.com/p-4415470509157.html
+###京东到家库存系统架构设计(库存扣减)
+http://www.sohu.com/a/167327703_659464
+###Redis有序集合(sorted set)存储用户订单集合
+http://www.runoob.com/redis/redis-sorted-sets.html
+###用redis实现锁机制的简单方法
+set key value NX EX max-lock-time
+http://www.redis.cn/commands/set.html
+###分布式ID生成系统
+http://www.sohu.com/a/205005675_659464

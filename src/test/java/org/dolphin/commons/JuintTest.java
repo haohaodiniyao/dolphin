@@ -1,11 +1,6 @@
 package org.dolphin.commons;
 
-import org.dolphin.commons.hystrix.CommandHelloWorld;
 import org.junit.Test;
-
-import rx.Observable;
-import rx.Observer;
-import rx.functions.Action1;
 
 public class JuintTest {
 
