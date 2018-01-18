@@ -21,3 +21,6 @@ http://www.redis.cn/commands/set.html
 http://www.sohu.com/a/205005675_659464
 ###支付网络异常，如何幂等性
 http://blog.csdn.net/github_36032947/article/details/78386551
+###数据库隔离级别、事务、锁
+###java特种兵作者博客
+http://blog.csdn.net/xieyuooo/article/list/2
