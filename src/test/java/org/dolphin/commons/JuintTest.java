@@ -4,11 +4,19 @@ import org.junit.Test;
 
 public class JuintTest {
 
+	private final String getStr(String b){
+		return "a"+"b"+"c";
+	}
+	
 	@Test
 	public void test() throws Exception {
-		String str = "2017-12-10T16:40:00+09:00";
-		System.out.println(str.substring(0, 10));
-		System.out.println(str.substring(11, 16));
+		final String str;
+		str = "100";
+		String str1 = str + "c";
+		System.out.println(getStr("")=="abc");
+//		String str = "2017-12-10T16:40:00+09:00";
+//		System.out.println(str.substring(0, 10));
+//		System.out.println(str.substring(11, 16));
 		
 //		System.out.println(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm"));
 //		System.out.println(DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.format(new Date()));
