@@ -8,3 +8,8 @@ COMMIT;
 ROLLBACK;
 LOCK TABLE USER READ;
 UNLOCK TABLES;
+
+***mysql各种超时timeout
+https://www.cnblogs.com/xiaoboluo768/p/6222862.html
+show global variables like '%timeout%';
+show session variables like '%timeout%';
