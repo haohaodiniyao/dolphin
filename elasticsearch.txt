@@ -1,0 +1,8 @@
+###elasticsearch搜索###
+win7环境
+***https://www.elastic.co/products/elasticsearch
+下载zip包
+同一台机器上elasticsearch连接不到elasticsearch head解决方案
+***http://blog.csdn.net/enterys/article/details/77045782
+下载安装elasticsearch head
+https://github.com/mobz/elasticsearch-head
