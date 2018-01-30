@@ -51,3 +51,29 @@ http://www.woshipm.com/pd/784483.html
 http://www.woshipm.com/pd/784631.html
 ***订单拆单***
 http://www.woshipm.com/pd/597257.html
+***高并发系统数据幂等性***
+乐观锁只是在更新数据那一刻锁表，其他时间不锁表，所以相对于悲观锁，效率更高
+请求IP、设备号、来源、会员号、流水号、
+https://www.cnblogs.com/moonandstar08/p/5334865.html
+***高并发的核心技术-幂等的实现方案
+http://blog.csdn.net/summer_huan/article/details/76345909
+***常用redis命令***
+GETSET key value
+http://www.redis.cn/commands/getset.html
+64位有符号原子递增 INCR key
+http://www.redis.cn/commands/incr.html
+64位有符号原子递减 DECR key
+http://www.redis.cn/commands/decr.html
+过期时间 EXPIRE key seconds
+http://www.redis.cn/commands/expire.html
+keys都不存在,才sets MSETNX key value [key value...]
+http://www.redis.cn/commands/msetnx.html
+
+***扛住100亿次请求 如何做一个“有把握”的春晚红包系统？（PPT下载）
+http://www.36dsj.com/archives/36513
+***从银行转账失败到分布式事务：总结与思考
+http://www.36dsj.com/archives/100020
+***CAP理论与MongoDB一致性、可用性的一些思考
+http://www.cnblogs.com/xybaby/p/6871764.html
+***分布式系统原理介绍
+http://www.open-open.com/doc/view/411f1bf61e33420c959e17b7ade75936
