@@ -77,3 +77,13 @@ http://www.36dsj.com/archives/100020
 http://www.cnblogs.com/xybaby/p/6871764.html
 ***分布式系统原理介绍
 http://www.open-open.com/doc/view/411f1bf61e33420c959e17b7ade75936
+***分布式系统的事务处理
+https://coolshell.cn/articles/10910.html
+***大规模SOA系统中的分布事务处事_程立
+https://wenku.baidu.com/view/be946bec0975f46527d3e104.html
+http://www.infoq.com/cn/articles/distributed-system-transaction-processing
+***Dynamo 译文 Dynamo: Amazon's Highly Available Key-value Store
+http://blog.csdn.net/XingKong_678/article/details/51531455
+https://kaimingwan.com/post/fen-bu-shi/fen-bu-shi-shi-wu-de-dian-xing-chu-li-fang-shi-2pc-tcc-yi-bu-que-bao-he-zui-da-nu-li-xing
+***分布式事务之说说TCC事务
+http://mini.eastday.com/a/161013075347792-3.html
