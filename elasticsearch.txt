@@ -6,3 +6,5 @@ win7环境
 ***http://blog.csdn.net/enterys/article/details/77045782
 下载安装elasticsearch head
 https://github.com/mobz/elasticsearch-head
+
+集群-节点-索引-类型-字段
