@@ -1,4 +1,4 @@
-package org.dolphin.commons.proxy;
+package org.dolphin.commons.proxy.cglib;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,25 +13,35 @@ import net.sf.cglib.proxy.MethodProxy;
  */
 public class CglibProxy implements MethodInterceptor {
 	private Object target;
-	
-	public CglibProxy(Object target) {
+	/**
+	 * 创建代理对象
+	 * @param target
+	 * @return
+	 */
+	public Object getInstance(Object target){
 		this.target = target;
+		Enhancer enhancer = new Enhancer();
+		enhancer.setSuperclass(this.target.getClass());
+		//回调方法
+		enhancer.setCallback(this);
+		//创建代理对象
+		return enhancer.create();
 	}
 
 	@Override
-	public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
-		Object res = null;
+	public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+		System.out.println("CGLIB动态代理");
+		Object result = null;
 		Throwable exception = null;
 		try {
-			System.out.println("my before...");
-			res = methodProxy.invoke(this.target, args);
-//			res = method.invoke(this.target, args);
-			System.out.println("my after...");
+			System.out.println("方法执行前...");
+			result = proxy.invokeSuper(obj, args);
+			System.out.println("方法执行后...");
 		} catch (InvocationTargetException e) {
 			exception = e.getTargetException();
 			throw exception;
 		}
-		return res;
+		return result;
 	}
 
 	public Object getProxy(){

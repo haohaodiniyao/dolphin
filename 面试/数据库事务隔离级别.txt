@@ -3,6 +3,11 @@ SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
 SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+***MySQL主键自增长步长
+set session auto_increment_increment=3;
+select @@global.auto_increment_increment,@@session.auto_increment_increment;
+
+
 START TRANSACTION;
 COMMIT;
 ROLLBACK;
@@ -15,3 +20,7 @@ show global variables like '%timeout%';
 show session variables like '%timeout%';
 ***阿里业务研发经典案例：另类解法，分布式一致性
 https://www.hellojava.com/article/739
+
+***查询mysql innodb中等待拿锁的线程
+https://dev.mysql.com/doc/refman/5.5/en/innodb-trx-table.html
+select * from information_schema.INNODB_TRX;

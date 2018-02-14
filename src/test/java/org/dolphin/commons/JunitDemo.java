@@ -8,7 +8,7 @@ public class JunitDemo {
 
 	public static void main(String[] args) {
 		
-		System.out.println(2.5*4+8+2.5*2+1.5+2.5+8+2.5+1+1+1.5);
+		System.out.println(System.currentTimeMillis());
 		
 //		Thread.currentThread().setName("my main thread dump");
 		

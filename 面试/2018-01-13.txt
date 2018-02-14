@@ -89,3 +89,15 @@ https://kaimingwan.com/post/fen-bu-shi/fen-bu-shi-shi-wu-de-dian-xing-chu-li-fan
 http://mini.eastday.com/a/161013075347792-3.html
 ***实现tcc分布式事务
 https://github.com/changmingxie/tcc-transaction
+***spring源码解析之事务篇
+http://www.linkedkeeper.com/detail/blog.action?bid=1045
+***DWZ富客户端框架（jUI）免费开源
+https://www.w3cschool.cn/dwz_jui/
+***同程凤凰缓存系统基于Redis的设计与实践
+https://mp.weixin.qq.com/s/2FEbkas_m1WnYUqjVpMkWw
+***分布式mysql分库分表中间件
+http://gaoxianglong.github.io/shark/
+***支付宝分布式事务测试方案
+http://www.infoq.com/cn/articles/distributed-transaction-testing-scheme-of-zhifubao/
+***分布式系统事务一致性解决方案
+http://www.infoq.com/cn/articles/solution-of-distributed-system-transaction-consistency?utm_source=infoq&utm_campaign=user_page&utm_medium=link
