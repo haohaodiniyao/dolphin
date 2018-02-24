@@ -1,0 +1,10 @@
+******Redis 为什么使用单进程单线程方式也这么快******
+http://www.syyong.com/db/Redis-why-the-use-of-single-process-and-single-threaded-way-so-fast.html
+******linux IO模式及select、poll、epoll
+https://segmentfault.com/a/1190000003063859#articleHeader6
+******redis字符串、哈希、列表、集合和有序集合
+http://www.redis.net.cn/tutorial/3508.html
+******使用Spring @DependsOn控制bean加载顺序
+http://blog.csdn.net/neweastsun/article/details/78775371
+******Redis中bitmap的妙用
+https://segmentfault.com/a/1190000008188655

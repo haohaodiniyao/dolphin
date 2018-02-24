@@ -24,7 +24,6 @@ public class JedisTest {
 		
 //		jedis.set("index", "0");
 		jedis.incr("index123");
-
 		System.out.println(jedis.get("index123"));
 		
 		
