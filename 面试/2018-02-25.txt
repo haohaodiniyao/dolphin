@@ -1,0 +1,17 @@
+******threadlocalrandom原理******
+http://ifeve.com/%e5%b9%b6%e5%8f%91%e5%8c%85%e4%b8%adthreadlocalrandom%e7%b1%bb%e5%8e%9f%e7%90%86%e5%89%96%e6%9e%90/
+******创建线程以及线程池时候要指定与业务相关的名字，以便于追溯问题******
+http://ifeve.com/namedthread/
+******JDK8中新增原子性操作类LongAdder
+http://ifeve.com/jdk8%e4%b8%ad%e6%96%b0%e5%a2%9e%e5%8e%9f%e5%ad%90%e6%80%a7%e6%93%8d%e4%bd%9c%e7%b1%bblongadder/
+******JDK8中StampedLock原理探究
+http://ifeve.com/jdk8%e4%b8%adstampedlock%e5%8e%9f%e7%90%86%e6%8e%a2%e7%a9%b6/
+https://www.jianshu.com/p/b3e9539ab7ae
+******ThreadLocal原理探究(经典)
+https://www.jianshu.com/p/981000b4126e
+******线程池使用FutureTask时候需要注意的一点事
+https://www.jianshu.com/p/a9f4f4478a00
+******细说 Java 的深拷贝和浅拷贝
+https://segmentfault.com/a/1190000010648514
+******Java中线程池ThreadPoolExecutor原理探究
+https://www.jianshu.com/p/3cc67876375f
