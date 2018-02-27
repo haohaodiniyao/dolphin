@@ -1,0 +1,4 @@
+******异地多活设计辣么难？其实是你想多了！
+https://yq.aliyun.com/articles/57715
+******面向业务的立体化高可用架构设计 
+https://yq.aliyun.com/articles/2459?spm=a2c4e.11153940.blogcont57715.5.4b2925d8WWI0cP
