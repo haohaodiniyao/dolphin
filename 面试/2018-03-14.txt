@@ -1,0 +1,13 @@
+####spring
+http://www.baeldung.com/httpclient-connection-management
+####threadlocal使用问题
+####spring事务之中使用线程，线程中代码是否在此事务之中
+####MySQL的undo log redo log MVCC WAL
+####threadlocal引发的问题(使用完没有清除，保存在线程中，线程池场景)
+http://blog.csdn.net/bob71/article/details/71298078
+http://www.importnew.com/22039.html
+####transient作用####
+####threadlocal和spring事务源码
+https://www.cnblogs.com/youzhibing/p/6690341.html
+####Spring基于ThreadLocal的“资源-事务”线程绑定设计的缘起
+http://www.uml.org.cn/j2ee/201211301.asp
