@@ -13,3 +13,5 @@ https://www.cnblogs.com/youzhibing/p/6690341.html
 http://www.uml.org.cn/j2ee/201211301.asp
 ####MySQL锁
 https://yq.aliyun.com/articles/94428?spm=a2c4e.11153940.blogcont94589.15.17a05abfvtM8m1
+####什么是长连接，怎么实现长连接
+https://www.cnblogs.com/gotodsp/p/6366163.html
