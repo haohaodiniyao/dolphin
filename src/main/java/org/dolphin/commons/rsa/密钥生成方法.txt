@@ -1,0 +1,6 @@
+RSA密钥生成方法
+openssl genrsa -out pri.key 2048
+openssl rsa -in pri.key -pubout -out qunar_prod_pub.pem
+openssl pkcs8 -topk8 -inform PEM -in pri.key -outform PEM -nocrypt -out pkcs8_qunar_prod_pri.pem
+-- 互转
+openssl rsa -in pkcs8_qunar_prod_pri.pem -out tmp-pri.pem
