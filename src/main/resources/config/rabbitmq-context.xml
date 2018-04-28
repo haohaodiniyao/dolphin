@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+     xmlns:task="http://www.springframework.org/schema/task"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+     http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.6.xsd
+     http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<context:property-placeholder location="classpath:rabbitmq.properties"></context:property-placeholder>
+	<task:executor id="rabbitmqExecutor" pool-size="10"></task:executor>
+	<rabbit:connection-factory id="rabbitmqConnectionFactory"
+	channel-cache-size="10"
+	executor="rabbitmqExecutor"
+	addresses="${rabbitmq.address}"
+	virtual-host="${rabbitmq.virtual.host}"
+	username="guest"
+	password="guest"></rabbit:connection-factory>
+	<rabbit:admin connection-factory="rabbitmqConnectionFactory"></rabbit:admin>
+	<rabbit:queue-arguments id="rabbitmqQueueArguments">
+
+	</rabbit:queue-arguments>
+	<rabbit:queue queue-arguments="rabbitmqQueueArguments" id="myqueue" name="myqueue"></rabbit:queue>
+	<bean id="rabbitTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+		<constructor-arg ref="rabbitmqConnectionFactory"></constructor-arg>
+		<property name="routingKey" value="myqueue"></property>
+	</bean>
+
+	<rabbit:fanout-exchange id="fanoutExchangeTest" name="fanoutExchangeTest">
+		<rabbit:bindings>
+			<rabbit:binding queue="myqueue"></rabbit:binding>
+		</rabbit:bindings>
+	</rabbit:fanout-exchange>
+
+	<bean id="myqueueListener" class="cn.sccfc.zacps.common.mqclient.RabbitMQListenerService"></bean>
+	<bean id="receiveListenerAdapter" class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">
+		<constructor-arg ref="myqueueListener"></constructor-arg>
+		<property name="defaultListenerMethod" value="handlerMsg"></property>
+	</bean>
+
+	<bean id="listenerContainer" class="org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer">
+		<property name="queueNames" value="myqueue"></property>
+		<property name="connectionFactory" ref="rabbitmqConnectionFactory"></property>
+		<property name="messageListener" ref="receiveListenerAdapter"></property>
+		<property name="concurrentConsumers" value="10"></property>
+		<property name="receiveTimeout" value="60000"></property>
+		<property name="shutdownTimeout" value="60000"></property>
+	</bean>
+</beans>
