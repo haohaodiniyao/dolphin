@@ -1,0 +1,2 @@
+#mybatis generator(MBG)详细配置
+https://blog.csdn.net/zsq520520/article/details/50952830

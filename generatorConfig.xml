@@ -7,7 +7,7 @@
     <javaModelGenerator targetPackage="" targetProject="mybatis-generator-demo/src/main/java" />
     <sqlMapGenerator targetPackage="mybatis" targetProject="mybatis-generator-demo/src/main/resources" />
     <javaClientGenerator targetPackage="" targetProject="mybatis-generator-demo/src/main/java" type="XMLMAPPER" />
-    
+    <!-- mapperName domainObjectName -->
     <table schema="" tableName="user_info" mapperName="UserInfoGeMapper" domainObjectName="UserInfoGe">
       <generatedKey column="id" sqlStatement="MySql" identity="true"/>
     </table>        
