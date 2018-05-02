@@ -1,2 +1,5 @@
 #classpath*:(加载jar包中同名文件)和classpath:
 https://yq.aliyun.com/articles/257817
+#Java NIO通俗编程之选择器Selector
+https://www.2cto.com/kf/201610/556476.html
+http://ifeve.com/selectors/
