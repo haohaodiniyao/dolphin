@@ -4,3 +4,17 @@ openssl rsa -in pri.key -pubout -out qunar_prod_pub.pem
 openssl pkcs8 -topk8 -inform PEM -in pri.key -outform PEM -nocrypt -out pkcs8_qunar_prod_pri.pem
 -- 互转
 openssl rsa -in pkcs8_qunar_prod_pri.pem -out tmp-pri.pem
+
+#阿里秘钥生成工具
+https://docs.open.alipay.com/291/105971/
+
+#A系统向B系统发起请求
+#A系统和B系统分别生成公私钥并交换公钥
+#A系统公钥A-pub-key
+A系统私钥A-pri-key
+#B系统公钥B-pub-key
+B系统私钥B-pri-key
+
+A系统用B系统公钥加密内容并且用A系统自己的私钥签名
+A系统向B系统发送请求
+B系统用自己的私钥解密内容并且用A系统的公钥验签
