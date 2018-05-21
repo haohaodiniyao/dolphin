@@ -1,0 +1,5 @@
+#mysql
+http://baijiahao.baidu.com/s?id=1562953734017084&wfr=spider&for=pc
+#mysql的事务、锁、MVCC多版本并发控制
+#经典
+https://tech.meituan.com/innodb-lock.html

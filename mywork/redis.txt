@@ -1,0 +1,6 @@
+#redis的IO模型
+https://zhuanlan.zhihu.com/p/24252862?refer=belief
+#使用Redis bitmaps进行快速、简单、实时统计
+https://www.cnblogs.com/fvsfvs123/p/4293203.html
+http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/
+#
