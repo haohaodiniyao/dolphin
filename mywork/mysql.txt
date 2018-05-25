@@ -3,3 +3,9 @@ http://baijiahao.baidu.com/s?id=1562953734017084&wfr=spider&for=pc
 #mysql的事务、锁、MVCC多版本并发控制
 #经典
 https://tech.meituan.com/innodb-lock.html
+#MySQL更新数据锁的粒度(锁住那些记录)
+#结论:锁粒度(锁住记录的范围)是根据索引走，而不是记录结果走
+https://blog.csdn.net/libo222/article/details/52459644
+https://blog.csdn.net/liyantianmin/article/details/50752140
+http://database.51cto.com/art/201008/219908.htm
+http://www.cnblogs.com/RunForLove/p/5695527.html

@@ -1,3 +1,9 @@
+###jdk1.7和jdk1.8的hashmap和concurrentHashMap区别
+https://www.jianshu.com/p/d10256f0ebea
+https://www.jianshu.com/p/b2d611c01bf3
+http://www.importnew.com/20386.html 
+###Java 8系列之重新认识HashMap
+https://tech.meituan.com/java-hashmap.html
 ###concurrenthashmap原理
 http://www.infoq.com/cn/articles/ConcurrentHashMap/
 ###余数hash和一致性hash

@@ -8,7 +8,15 @@ set session auto_increment_increment=3;
 select @@global.auto_increment_increment,@@session.auto_increment_increment;
 
 
+###查询autocommit=1事务自动提交=0非自动提交事务
+查询会话内
+select @@session.autocommit;
+--禁止自动提交事务
+set session autocommit=0;
+
+#事务开始
 START TRANSACTION;
+#事务提交
 COMMIT;
 ROLLBACK;
 LOCK TABLE USER READ;
