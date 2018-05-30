@@ -1,0 +1,8 @@
+##Spring的ApplicationContext依赖
+public interface ApplicationContext extends 
+EnvironmentCapable, 
+ListableBeanFactory, 
+HierarchicalBeanFactory, 
+MessageSource, 
+ApplicationEventPublisher, 
+ResourcePatternResolver {
