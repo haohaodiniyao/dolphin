@@ -9,3 +9,8 @@ https://blog.csdn.net/libo222/article/details/52459644
 https://blog.csdn.net/liyantianmin/article/details/50752140
 http://database.51cto.com/art/201008/219908.htm
 http://www.cnblogs.com/RunForLove/p/5695527.html
+#数据库事务ACID
+##A(Atomocity)原子性redo log
+##C(Consistency)一致性undo log实现
+##I(Isolation)隔离性由锁实现
+##D(Durability)持久性redo log实现
